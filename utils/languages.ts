@@ -14,21 +14,19 @@ export default async function LangData(user: string) {
   user(login: "${user}") {
     repositories(
       first: 100
-      affiliations: [OWNER, COLLABORATOR]
-      ownerAffiliations: [OWNER, COLLABORATOR]
     ) {
       edges {
         node {
           languages(first: 10) {
             totalSize
-            edges{
+            edges {
               size
               node {
                 name
                 color
               }
             }
-      }
+          }
         }
       }
     }

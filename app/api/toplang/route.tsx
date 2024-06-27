@@ -4,7 +4,7 @@ import Send from "@/helpers/send";
 import { getData } from "@/helpers/getData";
 import TopLang from "./TopLang";
 import LangData from "@/utils/languages";
-import { ThemeData } from "@/types/Preset";
+import { ThemeData } from "@/types/Theme";
 import BarLang from "./BarLang";
 import calculateLanguageStats from "@/helpers/calculate";
 

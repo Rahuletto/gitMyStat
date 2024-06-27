@@ -1,18 +1,18 @@
-import { Presets } from "@/template";
+import { Themes } from "@/templates";
 
 export function getData(searchParams: URLSearchParams) {
   const username = searchParams.has("username");
   const user = username ? searchParams.get("username") : "rahuletto";
 
-  const hasPreset = searchParams.has("preset");
-  let preset = hasPreset ? searchParams.get("preset") : "default";
-  if (!preset || !Presets[preset as string]?.accent) preset = "default";
+  const hasTheme = searchParams.has("theme");
+  let theme = hasTheme ? searchParams.get("theme") : "default";
+  if (!theme || !Themes[theme as string]?.accent) theme = "default";
 
   const hasColor = searchParams.has("color");
   const color = hasColor
     ? searchParams.get("color")
-    : hasPreset
-      ? Presets[preset as string].color
+    : hasTheme
+      ? Themes[theme as string].color
       : "#E6EDF3";
 
   const hasAccent = searchParams.has("accent");
@@ -21,8 +21,8 @@ export function getData(searchParams: URLSearchParams) {
         "0x",
         "#"
       )
-    : hasPreset
-      ? Presets[preset as string].accent
+    : hasTheme
+      ? Themes[theme as string].accent
       : "#8D96A0";
 
   const hasBg = searchParams.has("background");
@@ -31,8 +31,8 @@ export function getData(searchParams: URLSearchParams) {
         "0x",
         "#"
       )
-    : hasPreset
-      ? Presets[preset as string].background
+    : hasTheme
+      ? Themes[theme as string].background
       : "#0D1116";
 
   const hasBorder = searchParams.has("border");
@@ -41,33 +41,43 @@ export function getData(searchParams: URLSearchParams) {
         "0x",
         "#"
       )
-    : hasPreset
-      ? Presets[preset as string].border
+    : hasTheme
+      ? Themes[theme as string].border
       : "#30363D";
 
-      const hasTip = searchParams.has("tip");
-      const tip = hasTip
-        ? decodeURIComponent(searchParams.get("tip") as string).replaceAll(
-            "0x",
-            "#"
-          )
-        : hasPreset
-          ? Presets[preset as string].tip
-          : "#30363D";
+  const hasTip = searchParams.has("tip");
+  const tip = hasTip
+    ? decodeURIComponent(searchParams.get("tip") as string).replaceAll(
+        "0x",
+        "#"
+      )
+    : hasTheme
+      ? Themes[theme as string].tip
+      : "#30363D";
 
   const hasRad = searchParams.has("radius");
   const radius = hasRad
     ? Number(searchParams.get("radius"))
-    : hasPreset
-      ? Presets[preset as string].radius
+    : hasTheme
+      ? Themes[theme as string].radius
       : 24;
 
   const hasPad = searchParams.has("padding");
   const padding = hasPad
     ? Number(searchParams.get("padding"))
-    : hasPreset
-      ? Presets[preset as string].padding
+    : hasTheme
+      ? Themes[theme as string].padding
       : 24;
 
-  return { preset, user, color, accent, background, border, tip, radius, padding };
+  return {
+    theme,
+    user,
+    color,
+    accent,
+    background,
+    border,
+    tip,
+    radius,
+    padding,
+  };
 }

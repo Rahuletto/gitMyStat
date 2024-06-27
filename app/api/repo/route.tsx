@@ -3,7 +3,7 @@ import generateSvg from "@/helpers/generateSvg";
 import Send from "@/helpers/send";
 import { getData } from "@/helpers/getData";
 import RepoComp from "./Repo";
-import { ThemeData } from "@/types/Preset";
+import { ThemeData } from "@/types/Theme";
 import Repository from "@/utils/repo";
 import { Repo } from "@/types/Repo";
 import Error from "../Error";

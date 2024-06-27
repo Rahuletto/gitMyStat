@@ -1,4 +1,4 @@
-import { ThemeData } from "@/types/Preset";
+import { ThemeData } from "@/types/Theme";
 
 export default function Error(theme: ThemeData, error: { message: string, code: string }) {
   return (

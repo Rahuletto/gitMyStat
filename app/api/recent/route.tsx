@@ -3,7 +3,7 @@ import Recents from "./Recents";
 import generateSvg from "@/helpers/generateSvg";
 import Send from "@/helpers/send";
 import { getData } from "@/helpers/getData";
-import { ThemeData } from "@/types/Preset";
+import { ThemeData } from "@/types/Theme";
 import Error from "../Error";
 
 export async function GET(request: Request) {

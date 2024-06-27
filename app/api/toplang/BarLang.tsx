@@ -1,5 +1,5 @@
 import { LanguageStat } from "@/types/Languages";
-import { ThemeData } from "@/types/Preset";
+import { ThemeData } from "@/types/Theme";
 
 export default function BarLang(data: LanguageStat[], theme: ThemeData) {
   console.log(data);

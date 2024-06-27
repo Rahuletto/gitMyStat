@@ -1,4 +1,4 @@
-import { ThemeData } from "@/types/Preset";
+import { ThemeData } from "@/types/Theme";
 import { Repo } from "@/types/Repo";
 import { GoRepo, GoRepoForked, GoStar } from "react-icons/go";
 

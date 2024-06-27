@@ -1,4 +1,4 @@
-export interface PresetType {
+export interface ThemeType {
   [key: string]: {
     color: string;
     accent: string;

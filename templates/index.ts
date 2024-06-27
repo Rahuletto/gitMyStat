@@ -1,12 +1,21 @@
-import { PresetType } from "@/types/Preset";
+import { ThemeType } from "@/types/Theme";
 
-export const Presets: PresetType = {
+export const Themes: ThemeType = {
   default: {
     color: "#E6EDF3",
     accent: "#8D96A0",
     background: "#0D1116",
     border: "#30363D",
     tip: '#30363D',
+    radius: 24,
+    padding: 24,
+  },
+  light: {
+    color: "#000000",
+    accent: "#343941",
+    background: "#fefefe",
+    border: "#C2C9D1",
+    tip: '#D0D7DE',
     radius: 24,
     padding: 24,
   },

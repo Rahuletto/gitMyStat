@@ -1,5 +1,5 @@
 import { LanguageStat } from "@/types/Languages";
-import { ThemeData } from "@/types/Preset";
+import { ThemeData } from "@/types/Theme";
 
 export default function TopLang(data: LanguageStat[], theme: ThemeData) {
   return (

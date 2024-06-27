@@ -1,4 +1,4 @@
-import { ThemeData } from "@/types/Preset";
+import { ThemeData } from "@/types/Theme";
 import { RecentData } from "@/types/Recents";
 import { GoRepo } from "react-icons/go";
 
