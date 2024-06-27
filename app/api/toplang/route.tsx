@@ -1,33 +1,18 @@
 import RepoData from "@/utils/repositories";
-import Recents from "./Recents";
 import generateSvg from "@/helpers/generateSvg";
 import Send from "@/helpers/send";
 import { getData } from "@/helpers/getData";
+import TopLang from "./TopLang";
+import LangData from "@/utils/languages";
 import { ThemeData } from "@/types/Preset";
+import BarLang from "./BarLang";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  const { user, color, accent, background, border, radius, padding } =
+  const { user, color, accent, background, border, radius, padding, tip } =
     getData(searchParams);
 
-  const data = await RepoData(user || "rahuletto");
-
-  if (data.data.user.repositories.edges.length === 0) {
-    return new Response(
-      JSON.stringify({
-        error: "No repositories found",
-      }),
-      {
-        status: 404,
-        statusText: "Not Found",
-      }
-    );
-  }
-
-  const recent = {
-    name: data.data.user.repositories.edges[0].node.name as string,
-    url: data.data.user.repositories.edges[0].node.url as string,
-  };
+  const data = await LangData(user || "rahuletto");
 
   const theme: ThemeData = {
     user: user ?? "rahuletto",
@@ -37,15 +22,27 @@ export async function GET(request: Request) {
     border: border ?? "#30363D",
     radius: radius ?? 24,
     padding: padding ?? 24,
-  }
+  };
+
+  const hasBar = searchParams.has("bar");
+  const bar = hasBar ? searchParams.get("bar") : "false";
 
   try {
-    const image = await generateSvg(Recents(recent, theme), {
-      width: 410,
-      height: 110,
-    });
+    if (bar === "true") {
+      const image = await generateSvg(BarLang(data, theme), {
+        width: 300,
+        height: 327,
+      });
 
-    return Send(image);
+      return Send(image);
+    } else {
+      const image = await generateSvg(TopLang(data, theme), {
+        width: 300,
+        height: 227,
+      });
+
+      return Send(image);
+    }
   } catch (err: any) {
     console.warn(err);
     return new Response(
