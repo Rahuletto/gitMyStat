@@ -1,8 +1,9 @@
 export interface Repository {
-  primaryLanguage: {
-    name: string;
-    color: string;
-  } | null;
+  name: string;
+  languages: {
+    totalSize: number;
+    edges: {size: number; node: { name: string; color: string }}[] | null;
+  };
 }
 
 export interface LanguageData {

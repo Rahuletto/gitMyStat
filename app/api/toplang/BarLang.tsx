@@ -58,11 +58,9 @@ function Percent({
     <div tw="flex items-center justify-between w-full">
       <div tw="flex items-center" style={{ gap: 8 }}>
         <div tw={`h-2 w-2 rounded-full bg-[${color}]`} />
-        <span tw={`text-lg text-bold text-[${theme.color}]`}>
-          {language}
-        </span>
+        <span tw={`text-lg text-bold text-[${theme.color}]`}>{language}</span>
       </div>
-      <span tw={`text-[${theme.accent}]`}>{percent.toFixed(2)}%</span>
+      <div tw={`flex text-[${theme.accent}] text-base opacity-80`}>{percent.toFixed(2)}%</div>
     </div>
   );
 }

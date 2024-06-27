@@ -2,7 +2,6 @@ import { LanguageStat } from "@/types/Languages";
 import { ThemeData } from "@/types/Preset";
 
 export default function TopLang(data: LanguageStat[], theme: ThemeData) {
-  console.log(data);
   return (
     <div
       tw={`h-full w-full flex flex-col items-start justify-start bg-[${

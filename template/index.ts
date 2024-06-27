@@ -15,7 +15,7 @@ export const Presets: PresetType = {
     accent: '#A6A6A6',
     background: '#141414',
     border: '#1B1A1A',
-    tip: '#1c1c1c',
+    tip: '#5c5c5c',
     radius: 24,
     padding: 24,
   },

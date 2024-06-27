@@ -1,4 +1,4 @@
-import RepoData from "@/utils/repositories";
+import RepoList from "@/utils/repositories";
 import Recents from "./Recents";
 import generateSvg from "@/helpers/generateSvg";
 import Send from "@/helpers/send";
@@ -10,7 +10,7 @@ export async function GET(request: Request) {
   const { user, color, accent, background, border, radius, padding } =
     getData(searchParams);
 
-  const data = await RepoData(user || "rahuletto");
+  const data = await RepoList(user || "rahuletto");
 
   if (data.data.user.repositories.edges.length === 0) {
     return new Response(

@@ -1,4 +1,4 @@
-export default async function RepoData(user: string) {
+export default async function RepoList(user: string) {
   const graph = await fetch("https://api.github.com/graphql", {
     method: "POST",
     headers: {

@@ -2,17 +2,29 @@ import RepoData from "@/utils/repositories";
 import generateSvg from "@/helpers/generateSvg";
 import Send from "@/helpers/send";
 import { getData } from "@/helpers/getData";
-import TopLang from "./TopLang";
-import LangData from "@/utils/languages";
+import RepoComp from "./Repo";
 import { ThemeData } from "@/types/Preset";
-import BarLang from "./BarLang";
+import Repository from "@/utils/repo";
+import { Repo } from "@/types/Repo";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
+
+  let repo = searchParams.get("repo");
+  if (!repo) repo = "AcademiaPro";
+
   const { user, color, accent, background, border, radius, padding, tip } =
     getData(searchParams);
 
-  const data = await LangData(user || "rahuletto");
+  const rawdata = await Repository(user || "rahuletto", repo || "AcademiaPro");
+
+  const data: Repo = {
+    name: rawdata.data.user.repository.name,
+    description: rawdata.data.user.repository.description,
+    primaryLanguage: rawdata.data.user.repository.primaryLanguage,
+    stargazerCount: rawdata.data.user.repository.stargazerCount,
+    forkCount: rawdata.data.user.repository.forkCount,
+  };
 
   const theme: ThemeData = {
     user: user ?? "rahuletto",
@@ -22,27 +34,16 @@ export async function GET(request: Request) {
     border: border ?? "#30363D",
     radius: radius ?? 24,
     padding: padding ?? 24,
+    tip: tip ?? "#F6C655",
   };
 
-  const hasBar = searchParams.has("bar");
-  const bar = hasBar ? searchParams.get("bar") : "false";
-
   try {
-    if (bar === "true") {
-      const image = await generateSvg(BarLang(data, theme), {
-        width: 300,
-        height: 327,
-      });
+    const image = await generateSvg(RepoComp(data, theme), {
+      width: 500,
+      height: 170,
+    });
 
-      return Send(image);
-    } else {
-      const image = await generateSvg(TopLang(data, theme), {
-        width: 300,
-        height: 260,
-      });
-
-      return Send(image);
-    }
+    return Send(image);
   } catch (err: any) {
     console.warn(err);
     return new Response(

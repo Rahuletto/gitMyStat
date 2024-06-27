@@ -18,10 +18,16 @@ export default async function LangData(user: string) {
     ) {
       edges {
         node {
-          primaryLanguage {
-            name
-            color
-          }
+          languages(first: 10) {
+            totalSize
+            edges{
+              size
+              node {
+                name
+                color
+              }
+            }
+      }
         }
       }
     }
@@ -34,31 +40,49 @@ export default async function LangData(user: string) {
 
   const data: LanguageData = await graph.json();
 
-  const repoEdges = data.data.user.repositories.edges;
-  const languageCount: { [key: string]: { color: string; count: number } } = {};
+  const result = calculateLanguageStats(data);
 
-  let totalRepos = 0;
-
-  for (const edge of repoEdges) {
-    const language = edge.node.primaryLanguage;
-    if (language) {
-      if (!languageCount[language.name]) {
-        languageCount[language.name] = { color: language.color, count: 0 };
-      }
-      languageCount[language.name].count++;
-      totalRepos++;
-    }
-  }
-
-  const result: LanguageStat[] = [];
-  for (const [name, { color, count }] of Object.entries(languageCount)) {
-    result.push({
-      name,
-      color,
-      count,
-      percent: Number(Number((count / totalRepos) * 100).toFixed(2)),
-    });
-  }
-
-  return result.sort((a, b) => b.count - a.count);
+  return result
 }
+
+function calculateLanguageStats(languageData: LanguageData): LanguageStat[] {
+    const repositories = languageData.data.user.repositories.edges;
+    const languageMap = new Map<string, { size: number; color: string }>();
+    let totalSize = 0;
+  
+    repositories.forEach(repo => {
+      const languages = repo.node.languages.edges;
+      if (languages) {
+        languages.forEach(lang => {
+          const name = lang.node.name;
+          const size = lang.size;
+          const color = lang.node.color;
+  
+          if (languageMap.has(name)) {
+            languageMap.get(name)!.size += size;
+          } else {
+            languageMap.set(name, { size, color });
+          }
+  
+          totalSize += size;
+        });
+      }
+    });
+  
+    const languageStats: LanguageStat[] = [];
+    languageMap.forEach((value, key) => {
+      const { size, color } = value;
+      const percent = (size / totalSize) * 100;
+      const stat: LanguageStat = {
+        name: key,
+        color: color,
+        count: size,
+        percent: parseFloat(percent.toFixed(2))
+      };
+      languageStats.push(stat);
+    });
+  
+    languageStats.sort((a, b) => b.percent - a.percent);
+  
+    return languageStats;
+  }
