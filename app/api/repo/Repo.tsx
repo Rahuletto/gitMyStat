@@ -3,7 +3,7 @@ import { Repo } from "@/types/Repo";
 import { GoRepo, GoRepoForked, GoStar } from "react-icons/go";
 
 export default function RepoComp(data: Repo, theme: ThemeData) {
-  const sliced = data.description.slice(0, 110)
+  const sliced = data.description.slice(0, 110);
   return (
     <div
       tw={`h-full w-full flex flex-col items-start justify-between bg-[${
@@ -18,12 +18,15 @@ export default function RepoComp(data: Repo, theme: ThemeData) {
           <div tw={`flex text-[${theme.color}] text-3xl font-bold`}>
             {data.name}
           </div>
-
-         
         </div>
-        <div tw={`flex ml-9 text-[${theme.accent}]`} style={{ lineClamp: 2, overflow: 'hidden' }}>
-            {sliced.length === data.description.length ? data.description : sliced + "..."}
-          </div>
+        <div
+          tw={`flex ml-9 text-[${theme.accent}]`}
+          style={{ lineClamp: 2, overflow: "hidden" }}
+        >
+          {sliced.length === data.description.length
+            ? data.description
+            : sliced + "..."}
+        </div>
       </div>
 
       <div tw="flex ml-8 mt-2 flex-col" style={{ gap: 4 }}>

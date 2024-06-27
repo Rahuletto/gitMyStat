@@ -1,10 +1,12 @@
+import { QLError } from "./Error";
+
 export interface RawRepoData {
-    data: {
-        user: {
-        repository: Repo;
-        };
+  data: {
+    user: {
+      repository: Repo;
     };
-    
+  };
+  errors?: QLError[];
 }
 
 export interface Repo {

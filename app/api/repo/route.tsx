@@ -6,6 +6,7 @@ import RepoComp from "./Repo";
 import { ThemeData } from "@/types/Preset";
 import Repository from "@/utils/repo";
 import { Repo } from "@/types/Repo";
+import Error from "../Error";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -15,16 +16,6 @@ export async function GET(request: Request) {
 
   const { user, color, accent, background, border, radius, padding, tip } =
     getData(searchParams);
-
-  const rawdata = await Repository(user || "rahuletto", repo || "AcademiaPro");
-
-  const data: Repo = {
-    name: rawdata.data.user.repository.name,
-    description: rawdata.data.user.repository.description,
-    primaryLanguage: rawdata.data.user.repository.primaryLanguage,
-    stargazerCount: rawdata.data.user.repository.stargazerCount,
-    forkCount: rawdata.data.user.repository.forkCount,
-  };
 
   const theme: ThemeData = {
     user: user ?? "rahuletto",
@@ -38,6 +29,34 @@ export async function GET(request: Request) {
   };
 
   try {
+    const rawdata = await Repository(
+      user || "rahuletto",
+      repo || "AcademiaPro"
+    );
+
+    if (rawdata.errors && rawdata.errors[0]) {
+      const image = await generateSvg(
+        Error(theme, {
+          message: rawdata.errors[0].message,
+          code: rawdata.errors[0].type,
+        }),
+        {
+          width: 500,
+          height: 170,
+        }
+      );
+
+      return Send(image);
+    }
+
+    const data: Repo = {
+      name: rawdata.data.user.repository.name,
+      description: rawdata.data.user.repository.description,
+      primaryLanguage: rawdata.data.user.repository.primaryLanguage,
+      stargazerCount: rawdata.data.user.repository.stargazerCount,
+      forkCount: rawdata.data.user.repository.forkCount,
+    };
+
     const image = await generateSvg(RepoComp(data, theme), {
       width: 500,
       height: 170,
@@ -46,15 +65,19 @@ export async function GET(request: Request) {
     return Send(image);
   } catch (err: any) {
     console.warn(err);
-    return new Response(
-      JSON.stringify({
-        error: err.stack,
+
+    const image = await generateSvg(
+      Error(theme, {
+        message: (err as Error).message,
+        code: (err as Error).name,
       }),
       {
-        status: 500,
-        statusText: "Server Error",
+        width: 500,
+        height: 170,
       }
     );
+
+    return Send(image);
   }
 }
 

@@ -1,3 +1,5 @@
+import { QLError } from "./Error";
+
 export interface Repository {
   name: string;
   languages: {
@@ -6,7 +8,7 @@ export interface Repository {
   };
 }
 
-export interface LanguageData {
+export interface RawLanguageData {
   data: {
     user: {
       repositories: {
@@ -14,6 +16,7 @@ export interface LanguageData {
       };
     };
   };
+  errors?: QLError[];
 }
 
 export interface LanguageStat {

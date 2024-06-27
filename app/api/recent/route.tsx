@@ -4,30 +4,12 @@ import generateSvg from "@/helpers/generateSvg";
 import Send from "@/helpers/send";
 import { getData } from "@/helpers/getData";
 import { ThemeData } from "@/types/Preset";
+import Error from "../Error";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const { user, color, accent, background, border, radius, padding } =
     getData(searchParams);
-
-  const data = await RepoList(user || "rahuletto");
-
-  if (data.data.user.repositories.edges.length === 0) {
-    return new Response(
-      JSON.stringify({
-        error: "No repositories found",
-      }),
-      {
-        status: 404,
-        statusText: "Not Found",
-      }
-    );
-  }
-
-  const recent = {
-    name: data.data.user.repositories.edges[0].node.name as string,
-    url: data.data.user.repositories.edges[0].node.url as string,
-  };
 
   const theme: ThemeData = {
     user: user ?? "rahuletto",
@@ -37,9 +19,35 @@ export async function GET(request: Request) {
     border: border ?? "#30363D",
     radius: radius ?? 24,
     padding: padding ?? 24,
-  }
-
+  };
   try {
+    const rawdata = await RepoList(user || "rahuletto");
+
+    if (
+      rawdata.data.user.repositories.edges.length == 0 ||
+      (rawdata.errors && rawdata.errors[0])
+    ) {
+      const image = await generateSvg(
+        Error(theme, {
+          message: rawdata.errors
+            ? rawdata.errors[0]?.message
+            : `There are no repositories for "${user}"`,
+          code: rawdata.errors ? rawdata.errors[0]?.type : "NO_REPO",
+        }),
+        {
+          width: 500,
+          height: 170,
+        }
+      );
+
+      return Send(image);
+    }
+
+    const recent = {
+      name: rawdata.data.user.repositories.edges[0].node.name as string,
+      url: rawdata.data.user.repositories.edges[0].node.url as string,
+    };
+
     const image = await generateSvg(Recents(recent, theme), {
       width: 410,
       height: 110,
@@ -48,15 +56,18 @@ export async function GET(request: Request) {
     return Send(image);
   } catch (err: any) {
     console.warn(err);
-    return new Response(
-      JSON.stringify({
-        error: err.stack,
+    const image = await generateSvg(
+      Error(theme, {
+        message: (err as Error).message,
+        code: (err as Error).name,
       }),
       {
-        status: 500,
-        statusText: "Server Error",
+        width: 500,
+        height: 170,
       }
     );
+
+    return Send(image);
   }
 }
 
