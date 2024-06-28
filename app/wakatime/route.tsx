@@ -61,7 +61,7 @@ export async function GET(request: Request) {
           height: 337,
         });
 
-        return Send(image);
+        return Send(image, 0.1, true);
       }
       case "compact":
         const image = await generateSvg(CompactWaka(data, theme), {
@@ -77,7 +77,7 @@ export async function GET(request: Request) {
           height: 337,
         });
   
-        return Send(image);
+        return Send(image, 0.1);
       }
     }
 

@@ -3,7 +3,6 @@ import { WakaData } from "@/types/Waka";
 
 // /wakatime?username=rahuletto&layout=compact
 // /wakatime?username=rahuletto&layout=normal
-
 export default function NormalWaka(data: WakaData, theme: ThemeData) {
   return (
     <div

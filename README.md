@@ -1,5 +1,4 @@
-<img src="/assets/gitmystat.png" align='left'/>
-
+![gitmystat](/assets/gitmystat.png)
 
 # gitMyStat!
 
@@ -7,7 +6,7 @@
 
 > Inspired by a great project [github-readme-stats](https://github.com/anuraghazra/github-readme-stats/)
 
-## TOC
+## Table of Contents
 
 - [Parameters](#parameters)
 
@@ -22,7 +21,6 @@
 
 ---
 
-
 ## Parameters
 
 All cards are built equally. Which means these apply to every card possible
@@ -35,34 +33,33 @@ All cards are built equally. Which means these apply to every card possible
 ### Customizations
 
 > [!IMPORTANT]
->  As url encoding messes up the <kbd>#</kbd> tag character, we wanted you to provide a hexadecimal code instead.
+> As url encoding messes up the <kbd>#</kbd> tag character, we wanted you to provide a hexadecimal code instead.
 >
 > ### `What's that?!`
+>
 > Nothing actually. instead of `#` we use `0x`.
 >
 > For example
 >
-> `#000000` is the same as `0x000000`
-> `#075fff` is the same as `0x075fff`
+> `#000000` is the same as `0x000000` > `#075fff` is the same as `0x075fff`
 
-
-| Parameters   | Description                                |
-| ------------ | ------------------------------------------ |
+| Parameters   | Description                                        |
+| ------------ | -------------------------------------------------- |
 | `color`      | The hexadecimal color of the text color            |
 | `accent`     | The hexadecimal color of the accent color          |
 | `background` | The hexadecimal color of the background            |
 | `border`     | The hexadecimal color of the border                |
 | `tip`        | The hexadecimal color of the tertiary (tips) color |
-| `radius`     | The radius of the border                   |
-| `padding`    | The padding of the border                  |
-
+| `radius`     | The radius of the border                           |
+| `padding`    | The padding of the border                          |
 
 - Totally decked out example
-```
-![image](https://gitmystat.vercel.app/recent?username=rahuletto&color=0xaeaeae&accent=0x075fff&background=0x000000&border=0x075fff&tip=0x075fff&radius=12&padding=24)
-```
-![image](https://gitmystat.vercel.app/recent?username=rahuletto&color=0xaeaeae&accent=0x075fff&background=0x000000&border=0x075fff&tip=0x075fff&radius=12&padding=24)
 
+```
+![image](https://gitmystat.vercel.app/recent?username=rahuletto&color=0xaeaeae&accent=0x075fff&background=0x000000&border=0x075fff&tip=0x075fff&radius=12&padding=24)
+```
+
+![image](https://gitmystat.vercel.app/recent?username=rahuletto&color=0xaeaeae&accent=0x075fff&background=0x000000&border=0x075fff&tip=0x075fff&radius=12&padding=24)
 
 > [!TIP]
 >
@@ -101,7 +98,6 @@ This is similar to [Wakatime](#wakatime) top languages card. but this uses your 
 
 - `https://gitmystat.vercel.app/top?username=rahuletto`
 
-
   ![top](https://gitmystat.vercel.app/top?username=rahuletto)
 
 There are other layouts to choose from:
@@ -130,7 +126,6 @@ This is similar to [Top Languages](#top-languages) github card. but this uses yo
 
 - `https://gitmystat.vercel.app/wakatime?username=rahuletto`
 
-
   ![waka](https://gitmystat.vercel.app/wakatime?username=rahuletto)
 
 There are other layouts to choose from:
@@ -148,7 +143,7 @@ There are other layouts to choose from:
 - Bar
   > `https://gitmystat.vercel.app/wakatime?username=rahuletto&layout=bar`
 
-![waka](https://gitmystat.vercel.app/wakatime?username=rahuletto&layout=bar)
+![waka](https://gitmystat.vercel.app/wakatime?username=rahuletto&layout=bar&theme=dark)
 
 ---
 
@@ -171,6 +166,9 @@ There are currently 4 themes as of now.
 
 These themes are not hard coded. You can add your own!
 You have a great color palette? **PLEASE** do a pull request on our repo and make it a reality.
+
+> [!NOTE]
+> If you are making a theme, please make a light mode version of it too. This is not mandatory to do, but it's a good thing to have more flavors.
 
 #### `How?`
 
