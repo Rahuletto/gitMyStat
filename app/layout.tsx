@@ -12,6 +12,10 @@ const urbanist = Urbanist({
 export const metadata: Metadata = {
   title: "gitMyStat!",
   description: "Statistics for your GitHub account, in your README.",
+  icons: {
+    icon: "/favicon.ico",
+  },
+  themeColor: "#000000",
 };
 
 export default function RootLayout({
