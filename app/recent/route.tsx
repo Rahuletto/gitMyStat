@@ -6,6 +6,7 @@ import { getData } from "@/helpers/getData";
 import { ThemeData } from "@/types/Theme";
 import Error from "../Error";
 
+// /recent?username=rahuletto
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const { user, color, accent, background, border, radius, padding } =

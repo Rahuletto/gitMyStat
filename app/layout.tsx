@@ -10,8 +10,8 @@ const urbanist = Urbanist({
 });
 
 export const metadata: Metadata = {
-  title: "GStats",
-  description: "Statistics for your GitHub repositories",
+  title: "gitMyStat!",
+  description: "Statistics for your GitHub account, in your README.",
 };
 
 export default function RootLayout({

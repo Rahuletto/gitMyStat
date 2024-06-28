@@ -7,10 +7,12 @@ import LangData from "@/utils/languages";
 import { ThemeData } from "@/types/Theme";
 import BarTop from "./Bar";
 import calculateLanguageStats from "@/helpers/calculate";
+import CompactTop from "./Compact";
 
+// /top?username=rahuletto&layout=bar
+// /top?username=rahuletto&layout=normal
+// /top?username=rahuletto&layout=compact
 
-// /NormalTop?username=rahuletto&layout=bar
-// /NormalTop?username=rahuletto&layout=normal
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const { user, color, accent, background, border, radius, padding } =
@@ -32,11 +34,16 @@ export async function GET(request: Request) {
   try {
     const rawdata = await LangData(user || "rahuletto");
 
-    if (rawdata.data.user.repositories.edges.length == 0 || (rawdata.errors && rawdata.errors[0])) {
+    if (
+      rawdata.data.user.repositories.edges.length == 0 ||
+      (rawdata.errors && rawdata.errors[0])
+    ) {
       const image = await generateSvg(
         Error(theme, {
-          message: (rawdata.errors ? rawdata.errors[0]?.message : `There is no user with username "${user}"`),
-          code: (rawdata.errors ? rawdata.errors[0]?.type : "NOT_FOUND"),
+          message: rawdata.errors
+            ? rawdata.errors[0]?.message
+            : `There is no user with username "${user}"`,
+          code: rawdata.errors ? rawdata.errors[0]?.type : "NOT_FOUND",
         }),
         {
           width: 500,
@@ -49,20 +56,31 @@ export async function GET(request: Request) {
 
     const result = calculateLanguageStats(rawdata);
 
-    if (layout === "bar") {
-      const image = await generateSvg(BarTop(result, theme), {
-        width: 300,
-        height: 327,
-      });
+    switch (layout) {
+      case "bar": {
+        const image = await generateSvg(BarTop(result, theme), {
+          width: 300,
+          height: 327,
+        });
 
-      return Send(image);
-    } else {
-      const image = await generateSvg(NormalTop(result, theme), {
-        width: 300,
-        height: 260,
-      });
+        return Send(image);
+      }
+      case "compact":
+        const image = await generateSvg(CompactTop(result, theme), {
+          width: 480,
+          height: 130,
+        });
 
-      return Send(image);
+        return Send(image);
+      case "normal":
+      default: {
+        const image = await generateSvg(NormalTop(result, theme), {
+          width: 300,
+          height: 260,
+        });
+
+        return Send(image);
+      }
     }
   } catch (err: any) {
     console.warn(err);

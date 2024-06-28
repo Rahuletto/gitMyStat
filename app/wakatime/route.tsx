@@ -7,6 +7,7 @@ import { ThemeData } from "@/types/Theme";
 import Error from "../Error";
 import Wakatime from "@/utils/wakatime";
 import { WakaData } from "@/types/Waka";
+import BarWaka from "./Bar";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -53,21 +54,33 @@ export async function GET(request: Request) {
       ),
     };
 
-    if (layout === "compact") {
-      const image = await generateSvg(CompactWaka(data, theme), {
-        width: 480,
-        height: 130,
-      });
+    switch (layout) {
+      case "bar": {
+        const image = await generateSvg(BarWaka(data, theme), {
+          width: 300,
+          height: 337,
+        });
 
-      return Send(image);
-    } else {
-      const image = await generateSvg(NormalWaka(data, theme), {
-        width: 320,
-        height: 337,
-      });
-
-      return Send(image);
+        return Send(image);
+      }
+      case "compact":
+        const image = await generateSvg(CompactWaka(data, theme), {
+          width: 480,
+          height: 130,
+        });
+  
+        return Send(image);
+      case "normal":
+      default: {
+        const image = await generateSvg(NormalWaka(data, theme), {
+          width: 320,
+          height: 337,
+        });
+  
+        return Send(image);
+      }
     }
+
   } catch (err: any) {
     console.warn(err);
 
