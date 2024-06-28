@@ -97,9 +97,9 @@ All cards are built equally. Which means these apply to every card possible
 
 ### Repo card
 
-- `https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitmystat`
+- `https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat`
 
-  ![repo](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitmystat)
+  ![repo](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat)
 
 ### Top languages
 
@@ -162,10 +162,10 @@ There are currently 4 themes as of now.
 
 | Themes         | Preview                                                                                         |
 | -------------- | ----------------------------------------------------------------------------------------------- |
-| Dark (default) | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitmystat)                 |
-| Light          | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitmystat&theme=light)     |
-| Gold           | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitmystat&theme=gold)      |
-| Light gold     | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitmystat&theme=lightgold) |
+| Dark (default) | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat)                 |
+| Light          | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=light)     |
+| Gold           | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=gold)      |
+| Light gold     | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=lightgold) |
 
 > #### You like a theme, but you just don't like that particular color?
 >

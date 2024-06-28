@@ -6,7 +6,7 @@ export function animate(svgString: string, options?: Options): string {
   const pathRegex = /<path[^>]*\bd="([^"]*)"/gi;
   let match;
   let index = 0;
-  while ((match = pathRegex.exec(svgString)) !== null && index <= 5) {
+  while ((match = pathRegex.exec(svgString)) !== null) {
     if (match[1].length > 150) {
       svgString = svgString.replace(
         match[0],
@@ -51,7 +51,7 @@ export function animate(svgString: string, options?: Options): string {
             opacity: 0;
             animation: fadein 0.5s 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
           }
-            .barchart, .long-path {
+            .barchart, .long-path, image {
             transition: 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
             }
       </style>
