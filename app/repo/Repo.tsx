@@ -1,17 +1,12 @@
 import { ThemeData } from "@/types/Theme";
 import { Repo } from "@/types/Repo";
 import { GoRepo, GoRepoForked, GoStar } from "react-icons/go";
+import Container from "../Container";
 
 export default function RepoComp(data: Repo, theme: ThemeData) {
   const sliced = data.description.slice(0, 110);
   return (
-    <div
-      tw={`h-full w-full flex flex-col items-start justify-between bg-[${
-        theme.background
-      }] border-2 border-solid border-[${theme.border}] rounded-[${
-        theme.radius
-      }px] py-[${theme.padding}px] px-[${theme.padding * 1.2}px]`}
-    >
+    <Container theme={theme}>
       <div style={{ gap: 8 }} tw="flex flex-col items-start">
         <div style={{ gap: 8 }} tw="flex flex-row items-center">
           <GoRepo color={theme.color} size={28} />
@@ -50,6 +45,6 @@ export default function RepoComp(data: Repo, theme: ThemeData) {
           </div>
         </div>
       </div>
-    </div>
+    </Container>
   );
 }

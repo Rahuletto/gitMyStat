@@ -12,6 +12,7 @@
 
 - Cards
 
+  - [User](#user)
   - [Recent repos](#recent-repo)
   - [Repo card](#repo-card)
   - [Top languages](#top-languages)
@@ -74,11 +75,19 @@ All cards are built equally. Which means these apply to every card possible
 ---
 
 ## Cards
-
+- [User](#user)
 - [Recent repos](#recent-repo)
 - [Repo card](#repo-card)
 - [Top languages](#top-languages)
 - [Wakatime](#wakatime)
+
+### User stats
+> This can't be that accurate as this is 'per-year' data calculation
+
+- `https://gitmystat.vercel.app/user?username=rahuletto`
+
+  ![user card](https://gitmystat.vercel.app/user?username=rahuletto)
+
 
 ### Recent repo
 

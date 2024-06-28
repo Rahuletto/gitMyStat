@@ -2,16 +2,11 @@ import { generateColor } from "@/helpers/getColor";
 import { ThemeData } from "@/types/Theme";
 import { WakaData } from "@/types/Waka";
 import { colors } from "@/utils/colors";
+import Container from "../Container";
 
 export default function BarWaka(data: WakaData, theme: ThemeData) {
   return (
-    <div
-      tw={`h-full w-full flex flex-col items-center justify-start bg-[${
-        theme.background
-      }] border-2 border-solid border-[${theme.border}] rounded-[${
-        theme.radius
-      }px] py-[${theme.padding}px] px-[${theme.padding * 1.2}px] `}
-    >
+    <Container theme={theme}>
       <div tw={`text-[${theme.accent}] text-base font-medium mb-4`}>
         Most used languages
       </div>
@@ -43,7 +38,7 @@ export default function BarWaka(data: WakaData, theme: ThemeData) {
       <div tw={`absolute bottom-2 text-sm text-[${theme.tip}] right-3`}>
         wakatime
       </div>
-    </div>
+    </Container>
   );
 }
 

@@ -1,10 +1,7 @@
 import generateSvg from "@/helpers/generateSvg";
 import Send from "@/helpers/send";
 import { getData } from "@/helpers/getData";
-import RepoComp from "./User";
 import { ThemeData } from "@/types/Theme";
-import Repository from "@/utils/repo";
-import { Repo } from "@/types/Repo";
 import Error from "../Error";
 import UserData from "@/utils/users";
 import { parseGitHubData } from "@/helpers/calculateRank";
@@ -51,8 +48,8 @@ export async function GET(request: Request) {
     const data = parseGitHubData(rawdata)
 
     const image = await generateSvg(UserComp(data, theme), {
-      width: 600,
-      height: 240,
+      width: 285,
+      height: 340,
     });
 
     return Send(image);

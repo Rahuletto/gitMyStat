@@ -22,7 +22,8 @@ function calculatePercentiles(stats: UserStats): number {
   return globalPercentile * 100;
 }
 
-function mapPercentileToRank(percentile: number): string {
+function mapPercentileToRank(percent: number): string {
+  const percentile = 100 - percent;
   if (percentile <= 1) return "S";
   if (percentile <= 12.5) return "A+";
   if (percentile <= 25) return "A";
@@ -31,17 +32,18 @@ function mapPercentileToRank(percentile: number): string {
   if (percentile <= 62.5) return "B";
   if (percentile <= 75) return "B-";
   if (percentile <= 87.5) return "C+";
-  return "C";
+  if (percentile <= 91) return "C";
+  return "D";
 }
 
 export function calculateRank(stats: UserStats): string {
   const percentile = calculatePercentiles(stats);
+  console.log(percentile);
   const rank = mapPercentileToRank(percentile);
   return rank;
 }
 
 function erf(x: number): number {
-
   const a1 = 0.254829592;
   const a2 = -0.284496736;
   const a3 = 1.421413741;
@@ -57,20 +59,22 @@ function erf(x: number): number {
   return sign * (1.0 - y * Math.exp(-x * x));
 }
 
-
 export function parseGitHubData(data: RawUserData): UserStats {
   const userData = data.data.user;
   const contributions = userData.contributionsCollection;
   const repositories = userData.repositories.nodes;
   const followers = userData.followers.totalCount;
 
-  let stars = repositories.reduce((acc: number, repo: any) => acc + repo.stargazers.totalCount, 0);
+  const stars = repositories.reduce(
+    (acc, repo) => acc + repo.stargazers.totalCount,
+    0
+  );
 
   const stats: UserStats = {
-    commits: contributions.totalCommitContributions,
-    pullRequests: contributions.totalPullRequestContributions,
-    reviews: contributions.totalCommitContributions, // assuming reviews are commit contributions
-    issues: contributions.totalIssueContributions,
+    commits: contributions.contributionCalendar.totalContributions,
+    pullRequests: userData.pullRequests.totalCount,
+    reviews: contributions.totalCommitContributions,
+    issues: userData.issues.totalCount,
     stars,
     followers,
   };

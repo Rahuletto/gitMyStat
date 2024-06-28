@@ -1,4 +1,3 @@
-
 import { RawUserData } from "@/types/UserStats";
 
 export default async function UserData(user: string) {
@@ -13,14 +12,14 @@ export default async function UserData(user: string) {
       query: `
 query {
   user(login: "${user}") {
-    contributionsCollection {
+      contributionsCollection {
       totalCommitContributions
+      totalPullRequestContributions
+      totalIssueContributions
       contributionCalendar {
         totalContributions
       }
       totalRepositoriesWithContributedCommits
-      totalPullRequestContributions
-      totalIssueContributions
     }
     repositories(first: 100) {
       nodes {
@@ -28,6 +27,12 @@ query {
           totalCount
         }
       }
+    }
+    issues {
+      totalCount
+    }
+    pullRequests {
+      totalCount
     }
     followers {
       totalCount

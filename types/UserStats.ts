@@ -37,6 +37,12 @@ interface Repositories {
 interface User {
   contributionsCollection: ContributeCollection;
   repositories: Repositories;
+  issues: {
+    totalCount: number;
+  };
+  pullRequests: {
+    totalCount: number;
+  };
   followers: {
     totalCount: number;
   };

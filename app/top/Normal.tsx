@@ -1,15 +1,10 @@
 import { LanguageStat } from "@/types/Languages";
 import { ThemeData } from "@/types/Theme";
+import Container from "../Container";
 
 export default function NormalTop(data: LanguageStat[], theme: ThemeData) {
   return (
-    <div
-      tw={`h-full w-full flex flex-col items-start justify-start bg-[${
-        theme.background
-      }] border-2 border-solid border-[${theme.border}] rounded-[${
-        theme.radius
-      }px] py-[${theme.padding}px] px-[${theme.padding * 1.2}px]`}
-    >
+    <Container theme={theme}>
       <div tw="flex w-full flex-col" style={{ gap: 6 }}>
         {data.slice(0, 6).map((language) => (
           <Percent
@@ -21,7 +16,7 @@ export default function NormalTop(data: LanguageStat[], theme: ThemeData) {
           />
         ))}
       </div>
-    </div>
+    </Container>
   );
 }
 

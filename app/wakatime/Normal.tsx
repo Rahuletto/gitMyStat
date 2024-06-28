@@ -1,17 +1,12 @@
 import { ThemeData } from "@/types/Theme";
 import { WakaData } from "@/types/Waka";
+import Container from "../Container";
 
 // /wakatime?username=rahuletto&layout=compact
 // /wakatime?username=rahuletto&layout=normal
 export default function NormalWaka(data: WakaData, theme: ThemeData) {
   return (
-    <div
-      tw={`h-full w-full flex flex-col items-start justify-start bg-[${
-        theme.background
-      }] border-2 border-solid border-[${theme.border}] rounded-[${
-        theme.radius
-      }px] py-[${theme.padding}px] px-[${theme.padding * 1.2}px]`}
-    >
+    <Container theme={theme}>
       <div tw={`flex mb-3 text-[${theme.accent}] text-base font-medium`}>
         @{data.user}
       </div>
@@ -28,7 +23,7 @@ export default function NormalWaka(data: WakaData, theme: ThemeData) {
       <div tw={`absolute bottom-2 text-sm text-[${theme.tip}] right-3`}>
         wakatime
       </div>
-    </div>
+    </Container>
   );
 }
 

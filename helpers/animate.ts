@@ -17,7 +17,6 @@ export function animate(svgString: string, delay: number = 0.4, bar?: boolean): 
     match = "";
     index = 0;
     while ((match = clip.exec(svgString)) !== null) {
-      console.log(match[1]);
       if (match[1].includes("cp-id-1")) {
         svgString = svgString.replace(
           match[0],
