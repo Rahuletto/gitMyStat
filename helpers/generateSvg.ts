@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import satori from "satori";
+import { getIconCode, loadEmoji } from "./emoji";
 
 const urbanistFetch = fetch(
   new URL("../assets/Urbanist-SemiBold.ttf", import.meta.url),
@@ -39,6 +40,17 @@ export default async function generateSvg(
         name: "Urbanist",
       },
     ],
+    loadAdditionalAsset: async (code: string, segment: string) => {
+      if (code === "emoji") {
+
+        return `data:image/svg+xml;base64,${btoa(await loadEmoji(getIconCode(segment)))}`;
+      }
+
+
+      // if segment is normal text
+      return code;
+    }
+  
   });
 
   return data;
