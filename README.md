@@ -158,10 +158,6 @@ There are other layouts to choose from:
 
 ## Themes
 
-
-![img](http://localhost:3000/recent?username=rahuletto&theme=transparent)
-
-
 There are currently 4 themes as of now.
 
 | Themes         | Preview                                                                                         |
