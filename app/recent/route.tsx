@@ -41,7 +41,7 @@ export async function GET(request: Request) {
         }
       );
 
-      return Send(image);
+      return Send(image, {error: true});
     }
 
     const recent = {
@@ -68,7 +68,7 @@ export async function GET(request: Request) {
       }
     );
 
-    return Send(image);
+    return Send(image, {error: true});
   }
 }
 

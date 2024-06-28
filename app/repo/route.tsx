@@ -38,7 +38,7 @@ export async function GET(request: Request) {
       }
     );
 
-    return Send(image);
+    return Send(image, {error: true});
   }
 
   try {
@@ -59,7 +59,7 @@ export async function GET(request: Request) {
         }
       );
 
-      return Send(image);
+      return Send(image, {error: true});
     }
 
     const data: Repo = {
@@ -90,7 +90,7 @@ export async function GET(request: Request) {
       }
     );
 
-    return Send(image);
+    return Send(image, {error: true});
   }
 }
 

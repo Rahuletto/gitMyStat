@@ -51,7 +51,7 @@ export async function GET(request: Request) {
         }
       );
 
-      return Send(image);
+      return Send(image, {error: true});
     }
 
     const result = calculateLanguageStats(rawdata);
@@ -63,7 +63,7 @@ export async function GET(request: Request) {
           height: 327,
         });
 
-        return Send(image, 0.1, true);
+        return Send(image, {delay:0.1, bar: true});
       }
       case "compact":
         const image = await generateSvg(CompactTop(result, theme), {
@@ -79,7 +79,7 @@ export async function GET(request: Request) {
           height: 260,
         });
 
-        return Send(image, 0.1);
+        return Send(image, {delay: 0.1});
       }
     }
   } catch (err: any) {
@@ -95,7 +95,7 @@ export async function GET(request: Request) {
       }
     );
 
-    return Send(image);
+    return Send(image, {error: true});
   }
 }
 

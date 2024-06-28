@@ -42,7 +42,7 @@ export async function GET(request: Request) {
         }
       );
 
-      return Send(image);
+      return Send(image, {error: true});
     }
 
     const data = parseGitHubData(rawdata)
@@ -52,7 +52,7 @@ export async function GET(request: Request) {
       height: 340,
     });
 
-    return Send(image, 0.2);
+    return Send(image, {delay: 0.2});
   } catch (err: any) {
     console.warn(err);
 
@@ -67,7 +67,7 @@ export async function GET(request: Request) {
       }
     );
 
-    return Send(image);
+    return Send(image, {error: true});
   }
 }
 

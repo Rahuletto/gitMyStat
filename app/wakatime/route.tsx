@@ -44,7 +44,7 @@ export async function GET(request: Request) {
         }
       );
 
-      return Send(image);
+      return Send(image, {error: true});
     }
 
     const data: WakaData = {
@@ -61,7 +61,7 @@ export async function GET(request: Request) {
           height: 337,
         });
 
-        return Send(image, 0.1, true);
+        return Send(image, {delay: 0.1, bar: true});
       }
       case "compact":
         const image = await generateSvg(CompactWaka(data, theme), {
@@ -77,7 +77,7 @@ export async function GET(request: Request) {
           height: 337,
         });
   
-        return Send(image, 0.1);
+        return Send(image, { delay: 0.1 });
       }
     }
 
@@ -95,7 +95,7 @@ export async function GET(request: Request) {
       }
     );
 
-    return Send(image);
+    return Send(image, {error: true});
   }
 }
 
