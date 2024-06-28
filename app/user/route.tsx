@@ -52,7 +52,7 @@ export async function GET(request: Request) {
       height: 340,
     });
 
-    return Send(image);
+    return Send(image, 0.2);
   } catch (err: any) {
     console.warn(err);
 
