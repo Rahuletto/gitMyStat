@@ -20,7 +20,7 @@ export function animate(svgString: string, delay: number = 0.4, bar?: boolean): 
       if (match[1].includes("cp-id-1")) {
         svgString = svgString.replace(
           match[0],
-          `${match[0]} class="barchart" style="animation: fadein 0.7s ${index * delay + 0.2}s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards; opacity: 0;"`
+          `${match[0]} class="barchart" style="animation: fadein 0.7s ${index * delay + 0.1}s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards; opacity: 0;"`
         );
         index++;
       }
