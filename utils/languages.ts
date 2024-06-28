@@ -3,6 +3,9 @@ import { RawLanguageData } from "@/types/Languages";
 
 export default async function LangData(user: string) {
   const graph = await fetch("https://api.github.com/graphql", {
+    next: {
+      revalidate: 3600,
+    },
     method: "POST",
     headers: {
       "Content-Type": "application/json",

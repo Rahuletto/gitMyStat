@@ -1,5 +1,8 @@
 export default async function RepoList(user: string) {
   const graph = await fetch("https://api.github.com/graphql", {
+    next: {
+      revalidate: 3600,
+    },
     method: "POST",
     headers: {
       "Content-Type": "application/json",

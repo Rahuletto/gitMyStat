@@ -19,4 +19,5 @@ export interface ThemeData {
   radius: number;
   padding: number;
   tip?: string;
+  theme?: string
 }

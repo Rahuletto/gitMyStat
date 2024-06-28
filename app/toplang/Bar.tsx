@@ -1,8 +1,7 @@
 import { LanguageStat } from "@/types/Languages";
 import { ThemeData } from "@/types/Theme";
 
-export default function BarLang(data: LanguageStat[], theme: ThemeData) {
-  console.log(data);
+export default function BarTop(data: LanguageStat[], theme: ThemeData) {
   return (
     <div
       tw={`h-full w-full flex flex-col items-center justify-start bg-[${

@@ -1,4 +1,3 @@
-import RepoData from "@/utils/repositories";
 import generateSvg from "@/helpers/generateSvg";
 import Send from "@/helpers/send";
 import { getData } from "@/helpers/getData";
@@ -8,11 +7,9 @@ import Repository from "@/utils/repo";
 import { Repo } from "@/types/Repo";
 import Error from "../Error";
 
+// /repo?user=rahuletto&repo=AcademiaPro
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-
-  let repo = searchParams.get("repo");
-  if (!repo) repo = "AcademiaPro";
 
   const { user, color, accent, background, border, radius, padding, tip } =
     getData(searchParams);
@@ -27,6 +24,22 @@ export async function GET(request: Request) {
     padding: padding ?? 24,
     tip: tip ?? "#F6C655",
   };
+
+  let repo = searchParams.get("repo");
+  if (!repo) {
+    const image = await generateSvg(
+      Error(theme, {
+        message: "You didn't provide a repository name",
+        code: "MISSING_FIELD",
+      }),
+      {
+        width: 500,
+        height: 170,
+      }
+    );
+
+    return Send(image);
+  }
 
   try {
     const rawdata = await Repository(

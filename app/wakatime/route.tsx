@@ -1,15 +1,19 @@
-import Error from "../Error";
 import generateSvg from "@/helpers/generateSvg";
 import Send from "@/helpers/send";
 import { getData } from "@/helpers/getData";
-import TopLang from "./TopLang";
-import LangData from "@/utils/languages";
+import CompactWaka from "./Compact";
+import NormalWaka from './Normal'
 import { ThemeData } from "@/types/Theme";
-import BarLang from "./BarLang";
-import calculateLanguageStats from "@/helpers/calculate";
+import Error from "../Error";
+import Wakatime from "@/utils/wakatime";
+import { WakaData } from "@/types/Waka";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
+
+  const hasLayout = searchParams.has("layout");
+  const layout = hasLayout ? searchParams.get("layout") : "normal";
+
   const { user, color, accent, background, border, radius, padding, tip } =
     getData(searchParams);
 
@@ -21,19 +25,17 @@ export async function GET(request: Request) {
     border: border ?? "#30363D",
     radius: radius ?? 24,
     padding: padding ?? 24,
+    tip: tip ?? "#F6C655",
   };
 
-  const hasBar = searchParams.has("bar");
-  const bar = hasBar ? searchParams.get("bar") : "false";
-
   try {
-    const rawdata = await LangData(user || "rahuletto");
+    const rawdata = await Wakatime(user || "rahuletto");
 
-    if (rawdata.data.user.repositories.edges.length == 0 || (rawdata.errors && rawdata.errors[0])) {
+    if (!rawdata || rawdata.error) {
       const image = await generateSvg(
         Error(theme, {
-          message: (rawdata.errors ? rawdata.errors[0]?.message : `There is no user with username "${user}"`),
-          code: (rawdata.errors ? rawdata.errors[0]?.type : "NOT_FOUND"),
+          message: rawdata?.error ?? "",
+          code: "",
         }),
         {
           width: 500,
@@ -44,25 +46,24 @@ export async function GET(request: Request) {
       return Send(image);
     }
 
-    const result = calculateLanguageStats(rawdata);
+    const data: WakaData = {
+      user: rawdata.data.username,
+      languages: rawdata.data.languages.sort((a, b) => b.total_seconds - a.total_seconds)
+    };
 
-    if (bar === "true") {
-      const image = await generateSvg(BarLang(result, theme), {
-        width: 300,
-        height: 327,
-      });
+    if (layout === "compact") {
 
-      return Send(image);
     } else {
-      const image = await generateSvg(TopLang(result, theme), {
-        width: 300,
-        height: 260,
+      const image = await generateSvg(NormalWaka(data, theme), {
+        width: 500,
+        height: 170,
       });
 
       return Send(image);
     }
   } catch (err: any) {
     console.warn(err);
+
     const image = await generateSvg(
       Error(theme, {
         message: (err as Error).message,

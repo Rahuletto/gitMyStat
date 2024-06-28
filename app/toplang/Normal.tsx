@@ -1,7 +1,7 @@
 import { LanguageStat } from "@/types/Languages";
 import { ThemeData } from "@/types/Theme";
 
-export default function TopLang(data: LanguageStat[], theme: ThemeData) {
+export default function NormalTop(data: LanguageStat[], theme: ThemeData) {
   return (
     <div
       tw={`h-full w-full flex flex-col items-start justify-start bg-[${

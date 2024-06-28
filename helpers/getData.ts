@@ -1,16 +1,20 @@
-import { Themes } from "@/templates";
+import { Themes } from "@/themes";
+import { ThemeData } from "@/types/Theme";
 
-export function getData(searchParams: URLSearchParams) {
+export function getData(searchParams: URLSearchParams): ThemeData {
   const username = searchParams.has("username");
-  const user = username ? searchParams.get("username") : "rahuletto";
+  const user = (username ? searchParams.get("username") : "rahuletto") as string;
 
   const hasTheme = searchParams.has("theme");
-  let theme = hasTheme ? searchParams.get("theme") : "default";
-  if (!theme || !Themes[theme as string]?.accent) theme = "default";
+  let theme = hasTheme ? searchParams.get("theme") : "dark";
+  if (!theme || !Themes[theme as string]?.accent) theme = "dark";
 
   const hasColor = searchParams.has("color");
   const color = hasColor
-    ? searchParams.get("color")
+    ? decodeURIComponent(searchParams.get("color") as string).replaceAll(
+      "0x",
+      "#"
+    )
     : hasTheme
       ? Themes[theme as string].color
       : "#E6EDF3";

@@ -2,6 +2,9 @@ import { RawRepoData } from "@/types/Repo";
 
 export default async function RepoData(user: string, repo: string) {
   const graph = await fetch("https://api.github.com/graphql", {
+    next: {
+      revalidate: 3600,
+    },
     method: "POST",
     headers: {
       "Content-Type": "application/json",

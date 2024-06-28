@@ -2,11 +2,17 @@ import { ReactNode } from "react";
 import satori from "satori";
 
 const urbanistFetch = fetch(
-  new URL("../assets/Urbanist-SemiBold.ttf", import.meta.url)
+  new URL("../assets/Urbanist-SemiBold.ttf", import.meta.url),
+  {
+    cache: "force-cache",
+  }
 ).then((res) => res.arrayBuffer());
 
 const boldFetch = fetch(
-  new URL("../assets/Urbanist-Bold.ttf", import.meta.url)
+  new URL("../assets/Urbanist-Bold.ttf", import.meta.url),
+  {
+    cache: "force-cache",
+  }
 ).then((res) => res.arrayBuffer());
 
 export default async function generateSvg(
