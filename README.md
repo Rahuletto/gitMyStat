@@ -97,9 +97,9 @@ All cards are built equally. Which means these apply to every card possible
 
 ### Repo card
 
-- `https://gitmystat.vercel.app/repo?username=rahuletto&repo=portfolio`
+- `https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitmystat`
 
-  ![repo](https://gitmystat.vercel.app/repo?username=rahuletto&repo=portfolio)
+  ![repo](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitmystat)
 
 ### Top languages
 
