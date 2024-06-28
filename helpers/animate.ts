@@ -2,7 +2,7 @@ export function animate(svgString: string, delay: number = 0.4, bar?: boolean): 
   const pathRegex = /<path[^>]*\bd="([^"]*)"/gi;
   let match;
   let index = 0;
-  while ((match = pathRegex.exec(svgString)) !== null) {
+  while ((match = pathRegex.exec(svgString)) !== null && index <= 5) {
     if (match[1].length > 150) {
       svgString = svgString.replace(
         match[0],
