@@ -10,36 +10,46 @@ export default function NormalWaka(data: WakaData, theme: ThemeData) {
         theme.radius
       }px] py-[${theme.padding}px] px-[${theme.padding * 1.2}px]`}
     >
-      <p tw={`text-[${theme.accent}] text-base font-medium`}>@{data.user}</p>
+      <div tw={`flex mb-3 text-[${theme.accent}] text-base font-medium`}>
+        @{data.user}
+      </div>
       <div tw="flex w-full flex-col" style={{ gap: 6 }}>
         {data.languages.slice(0, 6).map((language) => (
-          <Percent
+          <Time
             key={language.name}
             language={language.name}
-            percent={language.percent}
+            seconds={language.total_seconds}
             theme={theme}
           />
         ))}
+      </div>
+      <div tw={`absolute bottom-2 text-sm text-[${theme.tip}] right-3`}>
+        wakatime
       </div>
     </div>
   );
 }
 
-function Percent({
+function Time({
   language,
-  percent,
+  seconds,
   theme,
 }: {
   language: string;
-  percent: number;
+  seconds: number;
   theme: ThemeData;
 }) {
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+
   return (
     <div tw="flex items-center justify-between w-full">
       <div tw="flex items-center" style={{ gap: 8 }}>
-        <span tw={`text-lg text-bold text-[${theme.color}]`}>{language}</span>
+        <span tw={`text-lg font-bold text-[${theme.color}]`}>{language}</span>
       </div>
-      <span tw={`text-[${theme.accent}]`}>{percent.toFixed(2)}%</span>
+      <span tw={`text-[${theme.accent}]`}>
+       {hours}h {minutes}m
+      </span>
     </div>
   );
 }

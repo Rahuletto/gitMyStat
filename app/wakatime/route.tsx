@@ -2,7 +2,7 @@ import generateSvg from "@/helpers/generateSvg";
 import Send from "@/helpers/send";
 import { getData } from "@/helpers/getData";
 import CompactWaka from "./Compact";
-import NormalWaka from './Normal'
+import NormalWaka from "./Normal";
 import { ThemeData } from "@/types/Theme";
 import Error from "../Error";
 import Wakatime from "@/utils/wakatime";
@@ -48,15 +48,22 @@ export async function GET(request: Request) {
 
     const data: WakaData = {
       user: rawdata.data.username,
-      languages: rawdata.data.languages.sort((a, b) => b.total_seconds - a.total_seconds)
+      languages: rawdata.data.languages.sort(
+        (a, b) => b.total_seconds - a.total_seconds
+      ),
     };
 
     if (layout === "compact") {
+      const image = await generateSvg(CompactWaka(data, theme), {
+        width: 480,
+        height: 130,
+      });
 
+      return Send(image);
     } else {
       const image = await generateSvg(NormalWaka(data, theme), {
-        width: 500,
-        height: 170,
+        width: 320,
+        height: 337,
       });
 
       return Send(image);
