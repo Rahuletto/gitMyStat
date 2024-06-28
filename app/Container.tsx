@@ -10,7 +10,7 @@ export default function Container({
 }) {
   return (
     <div
-      tw={`h-full w-full flex flex-col items-start justify-between bg-[${
+      tw={`h-full w-full flex flex-col items-start justify-start bg-[${
         theme.background
       }] border-2 border-solid border-[${theme.border}] rounded-[${
         theme.radius
