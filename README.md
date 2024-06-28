@@ -158,14 +158,29 @@ There are other layouts to choose from:
 
 ## Themes
 
+
+![img](http://localhost:3000/recent?username=rahuletto&theme=transparent)
+
+
 There are currently 4 themes as of now.
 
 | Themes         | Preview                                                                                         |
 | -------------- | ----------------------------------------------------------------------------------------------- |
-| Dark (default) | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat)                 |
-| Light          | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=light)     |
-| Gold           | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=gold)      |
-| Light gold     | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=lightgold) |
+| `dark` (default) | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat)                 |
+| `light`          | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=light)     |
+| `gold`           | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=gold)      |
+| `gold-light`     | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=gold-light) |
+| `transparent`     | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=transparent) |
+| `transparent-light`     | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=transparent-light) |
+| `tokyonight`     | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=tokyonight) |
+| `tokyoday`     | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=tokyoday) |
+| `gruvbox`     | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=gruvbox) |
+| `gruvbox-light`     | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=gruvbox-light) |
+| `catppuccin`     | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=catppuccin) |
+| `catppuccin-light`     | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=catppuccin-light) |
+| `onedark`     | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=onedark) |
+| `onelight`     | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=onelight) |
+
 
 > #### You like a theme, but you just don't like that particular color?
 >
