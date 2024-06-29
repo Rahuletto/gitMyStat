@@ -24,6 +24,22 @@ export async function GET(request: Request) {
   try {
     const rawdata = await RepoList(user || "rahuletto");
 
+    if(!rawdata.data.user?.repositories) {
+      const image = await generateSvg(
+        Error(theme, {
+          message: rawdata.errors
+            ? rawdata.errors[0]?.message
+            : `There are user with username "${user}"`,
+          code: rawdata.errors ? rawdata.errors[0]?.type : "NO_USER",
+        }),
+        {
+          width: 500,
+          height: 170,
+        }
+      );
+
+      return Send(image, {error: true});
+    }
     if (
       rawdata.data.user.repositories.edges.length == 0 ||
       (rawdata.errors && rawdata.errors[0])

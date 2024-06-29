@@ -15,7 +15,7 @@ export default function CompactWaka(data: WakaData, theme: ThemeData) {
         >
           {data.languages[0].name}
         </div>
-        <div tw={`flex text-[${theme.accent}] text-lg font-medium`}>
+        <div tw={`flex text-[${theme.color}] text-lg font-medium`}>
           for {data.languages[0].hours} hours
         </div>
       </div>

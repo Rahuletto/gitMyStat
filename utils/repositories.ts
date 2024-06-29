@@ -10,7 +10,7 @@ export default async function RepoList(user: string) {
       query: `
                 query {
       user(login: "${user}") {
-        repositories(first: 1, orderBy: {direction: DESC, field: UPDATED_AT}) {
+        repositories(first: 1, orderBy: {direction: DESC, field: PUSHED_AT}) {
           edges {
             node {
               id

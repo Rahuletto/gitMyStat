@@ -1,7 +1,6 @@
 import { ThemeData } from "@/types/Theme";
 import { RecentData } from "@/types/Recents";
 import { GoRepo } from "react-icons/go";
-import Container from "../Container";
 
 export default function Recents(data: RecentData, theme: ThemeData) {
   return (
@@ -13,7 +12,7 @@ export default function Recents(data: RecentData, theme: ThemeData) {
     }px] py-[${theme.padding}px] px-[${theme.padding * 1.2}px] `}
   >
       <p tw={`text-[${theme.accent}] text-base font-medium`}>
-        @{theme.user} is currently working on
+        @{theme.user} has recently worked on
       </p>
       <div style={{ gap: 8 }} tw="flex flex-row items-center">
         <GoRepo color={theme.color} size={28} />

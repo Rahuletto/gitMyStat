@@ -14,7 +14,7 @@ export default function CompactTop(data: LanguageStat[], theme: ThemeData) {
         >
           {data[0].name}
         </div>
-        <div tw={`flex text-[${theme.accent}] text-lg font-medium`}>
+        <div tw={`flex text-[${theme.color}] text-lg font-medium`}>
             {`(${data[0].percent}%)`}
         </div>
       </div>

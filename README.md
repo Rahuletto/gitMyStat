@@ -2,7 +2,7 @@
 
 # gitMyStat!
 
-~~Get~~ git your stats to use it in your `README`
+~~Get~~ Git my stat! 🎨 Turn your GitHub activity into sleek stats and cool visuals
 
 > Inspired by a great project [github-readme-stats](https://github.com/anuraghazra/github-readme-stats/)
 
@@ -104,12 +104,7 @@ All cards are built equally. Which means these apply to every card possible
 ### Top languages
 
 This is similar to [Wakatime](#wakatime) top languages card. but this uses your github repositories.
-
-- `https://gitmystat.vercel.app/top?username=rahuletto`
-
-  ![top](https://gitmystat.vercel.app/top?username=rahuletto)
-
-There are other layouts to choose from:
+There are 3 layouts to choose from:
 
 - Compact
   > `https://gitmystat.vercel.app/top?username=rahuletto&layout=compact`
@@ -132,12 +127,7 @@ This is similar to [Top Languages](#top-languages) github card. but this uses yo
 
 > [!WARNING]
 > We are using WakaTime api, which only displays for profiles that are public. Make sure the `Display code time publicly` and `Display languages, editors, os, categories publicly` are enabled.
-
-- `https://gitmystat.vercel.app/wakatime?username=rahuletto`
-
-  ![waka](https://gitmystat.vercel.app/wakatime?username=rahuletto)
-
-There are other layouts to choose from:
+There are 3 layouts to choose from:
 
 - Compact
   > `https://gitmystat.vercel.app/wakatime?username=rahuletto&layout=compact`
@@ -158,7 +148,7 @@ There are other layouts to choose from:
 
 ## Themes
 
-There are currently 4 themes as of now.
+There are plenty of themes.
 
 | Themes         | Preview                                                                                         |
 | -------------- | ----------------------------------------------------------------------------------------------- |
@@ -177,6 +167,8 @@ There are currently 4 themes as of now.
 | `onedark`     | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=onedark) |
 | `onelight`     | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=onelight) |
 
+
+Visit the [themes page](https://gitmystat.vercel.app#themes) to see more!
 
 > #### You like a theme, but you just don't like that particular color?
 >

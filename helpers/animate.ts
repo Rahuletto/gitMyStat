@@ -31,6 +31,30 @@ export function animate(svgString: string, options?: Options): string {
     }
   }
   const style = `
+  <script type="text/javascript">
+        <![CDATA[
+            // Intersection Observer setup
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        startAnimations(); // Call a function to start animations
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            // Observe the SVG root element
+            const svgRoot = document.documentElement;
+            observer.observe(svgRoot);
+
+            // Function to start animations
+            function startAnimations() {
+                // Your animation start logic here
+                console.log('SVG is in view, start animations!');
+            }
+        ]]>
+    </script>
+    
       <style>
       @keyframes slide {
         from {

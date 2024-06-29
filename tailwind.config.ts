@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { Themes } from "./themes";
 
 const config: Config = {
   content: [
@@ -6,8 +7,17 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "media", // or 'class'
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        background: "var(--background)",
+        color: "var(--color)",
+        accent: "var(--accent)",
+        tip: "var(--tip)",
+        ...Themes
+      },
+    },
   },
   plugins: [],
 };
