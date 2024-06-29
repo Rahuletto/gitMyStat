@@ -1,3 +1,4 @@
+import { useDevice } from '@/providers/DeviceProvider';
 import { Themes } from '@/themes';
 import dynamic from 'next/dynamic';
 
@@ -7,6 +8,7 @@ const Card = dynamic(() => import('./Card'), {
 
 
 export default function Theme() {
+  const device = useDevice();
   return (
     <section
     data-theme="default"
@@ -23,7 +25,7 @@ export default function Theme() {
     >
       {Object.keys(Themes).map((theme, i) => {
         return (
-          <Card key={i} theme={theme} width={300} />
+          <Card key={i} theme={theme} width={(device == 'mobile' ? 300 : 500)} />
         );
       })}
     </div>

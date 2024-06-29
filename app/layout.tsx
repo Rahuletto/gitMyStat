@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Urbanist } from "next/font/google";
 import "./globals.css";
+import { DeviceProvider } from "@/providers/DeviceProvider";
 
 const urbanist = Urbanist({
   subsets: ["latin"],
@@ -10,9 +11,9 @@ const urbanist = Urbanist({
 });
 
 export const viewport: Viewport = {
-  themeColor: '#0D1116',
-  colorScheme: 'dark',
-}
+  themeColor: "#0D1116",
+  colorScheme: "dark",
+};
 
 export const metadata: Metadata = {
   title: "gitMyStat!",
@@ -20,17 +21,17 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
-  category: 'tool',
+  category: "tool",
   openGraph: {
-    siteName: 'gitMyStat!',
-    type: 'website',
-    locale: 'en_US',
+    siteName: "gitMyStat!",
+    type: "website",
+    locale: "en_US",
     images: [
       {
         url: "/banner.png",
         alt: "gitMyStat!",
       },
-    ]
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -39,9 +40,8 @@ export const metadata: Metadata = {
         url: "/banner.png",
         alt: "gitMyStat!",
       },
-    ]
+    ],
   },
-
 };
 
 export default function RootLayout({
@@ -51,7 +51,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={urbanist.className}>{children}</body>
+      <body className={urbanist.className}>
+        <DeviceProvider>{children}</DeviceProvider>
+      </body>
     </html>
   );
 }

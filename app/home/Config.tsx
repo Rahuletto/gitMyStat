@@ -1,3 +1,4 @@
+import { useDevice } from "@/providers/DeviceProvider";
 import dynamic from "next/dynamic";
 
 const Card = dynamic(() => import("./Card"), {
@@ -5,6 +6,7 @@ const Card = dynamic(() => import("./Card"), {
 });
 
 export default function Config() {
+  const device = useDevice()
   return (
     <>
       <section
@@ -97,7 +99,7 @@ export default function Config() {
             <Card
               url="/top?username=rahuletto&layout=compact"
               text="/top?username=rahuletto&layout=compact"
-              width={300}
+              width={(device == 'mobile' ? 300 : 500)}
             />
           </div>
         </div>
@@ -124,7 +126,7 @@ export default function Config() {
             <Card
               url="/wakatime?username=rahuletto&layout=compact"
               text="/wakatime?username=rahuletto&layout=compact"
-              width={300}
+              width={(device == 'mobile' ? 300 : 500)}
             />
           </div>
         </div>
