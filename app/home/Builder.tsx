@@ -40,7 +40,7 @@ export default function Builder() {
                   e.target.value
                 )
               }
-              className="dark:bg-moonlight-background dark:text-moonlight-accent border-paper-border text-paper-color max-w-[120px] appearance-none rounded-xl px-4 py-2 text-lg"
+              className="max-w-[120px] appearance-none rounded-xl border-paper-border px-4 py-2 text-lg text-paper-color dark:bg-moonlight-background dark:text-moonlight-accent"
             />
           </div>
         ) : (
@@ -57,7 +57,7 @@ export default function Builder() {
                 }}
               />
               <HexColorInput
-                className="dark:bg-moonlight-background dark:text-moonlight-accent border-paper-border text-paper-color max-w-[200px] appearance-none rounded-xl px-4 py-2 text-lg"
+                className="max-w-[200px] appearance-none rounded-xl border-paper-border px-4 py-2 text-lg text-paper-color dark:bg-moonlight-background dark:text-moonlight-accent"
                 color={(themeColors as any)[key]}
                 onChange={(e) => {
                   handleColorChange(key as keyof typeof themeColors, e);
@@ -99,45 +99,45 @@ export default function Builder() {
   }
 
   const btnStyle =
-    "active:scale-90 hover:scale-105 rounded-full lg:py-4 lg:px-12  py-2 px-6 lg:text-xl text-lg lg:font-semibold font-medium hover:dark:bg-moonlight-background hover:dark:text-moonlight-color hover:bg-paper-accent hover:text-paper-color";
+    "active:scale-90 hover:scale-105 rounded-full lg:py-4 lg:px-12 py-2 px-2 lg:text-xl text-lg lg:font-semibold font-medium hover:dark:bg-moonlight-background hover:dark:text-moonlight-color hover:bg-paper-accent hover:text-paper-color";
   return (
     <section
       data-theme="default"
       id="builder"
-      className="dark:bg-moonlight-background dark:border-moonlight-border bg-gray-background border-gray-border flex min-h-screen w-full flex-col items-start justify-start gap-6 border-t-2 border-solid px-12 py-16 lg:px-48"
+      className="bg-gray-background border-gray-border flex min-h-screen w-full flex-col items-start justify-start gap-6 border-t-2 border-solid px-12 py-16 lg:px-48 dark:border-moonlight-border dark:bg-moonlight-background"
     >
       <div>
         <h2 className="text-left text-5xl font-bold">Builder</h2>
         <p className="text-lg">Build your card without messing with the url</p>
       </div>
 
-      <div className="dark:bg-moonlight-border bg-paper-accent flex flex-row flex-wrap items-center gap-4 rounded-3xl p-2 lg:justify-center lg:rounded-full">
+      <div className="flex flex-row flex-wrap items-center gap-4 rounded-3xl bg-paper-accent p-2 lg:justify-center lg:rounded-full dark:bg-moonlight-border">
         <button
-          className={`${btnStyle} ${card === "user" && "dark:bg-moonlight-color dark:text-moonlight-background bg-paper-border text-paper-color"}`}
+          className={`${btnStyle} ${card === "user" && "bg-paper-border text-paper-color dark:bg-moonlight-color dark:text-moonlight-background"}`}
           onClick={() => setCard("user")}
         >
           User
         </button>
         <button
-          className={`${btnStyle} ${card === "recent" && "dark:bg-moonlight-color dark:text-moonlight-background bg-paper-border text-paper-color"}`}
+          className={`${btnStyle} ${card === "recent" && "bg-paper-border text-paper-color dark:bg-moonlight-color dark:text-moonlight-background"}`}
           onClick={() => setCard("recent")}
         >
           Recent
         </button>
         <button
-          className={`${btnStyle} ${card === "repo" && "dark:bg-moonlight-color dark:text-moonlight-background bg-paper-border text-paper-color"}`}
+          className={`${btnStyle} ${card === "repo" && "bg-paper-border text-paper-color dark:bg-moonlight-color dark:text-moonlight-background"}`}
           onClick={() => setCard("repo")}
         >
           Repo
         </button>
         <button
-          className={`${btnStyle} ${card === "top" && "dark:bg-moonlight-color dark:text-moonlight-background bg-paper-border text-paper-color"}`}
+          className={`${btnStyle} ${card === "top" && "bg-paper-border text-paper-color dark:bg-moonlight-color dark:text-moonlight-background"}`}
           onClick={() => setCard("top")}
         >
           Top Languages
         </button>
         <button
-          className={`${btnStyle} ${card === "wakatime" && "dark:bg-moonlight-color dark:text-moonlight-background bg-paper-border text-paper-color"}`}
+          className={`${btnStyle} ${card === "wakatime" && "bg-paper-border text-paper-color dark:bg-moonlight-color dark:text-moonlight-background"}`}
           onClick={() => setCard("wakatime")}
         >
           Wakatime
@@ -146,7 +146,7 @@ export default function Builder() {
 
       {card ? (
         <div
-          className={`${error == 1 ? "border-4 border-red-400" : ""} dark:bg-moonlight-border flex min-h-[70vh] w-full flex-col items-start justify-between gap-8 rounded-3xl px-12 py-6`}
+          className={`${error == 1 ? "border-4 border-red-400" : ""} flex min-h-[70vh] w-full flex-col items-start justify-between gap-8 rounded-3xl px-12 py-6 dark:bg-moonlight-border`}
         >
           <div className="flex w-full flex-col items-start justify-start gap-8">
             <h2 className="text-left text-4xl font-bold">
@@ -161,7 +161,7 @@ export default function Builder() {
                     required
                     value={theme}
                     onChange={(e) => setTheme(e.target.value)}
-                    className="dark:bg-moonlight-background dark:text-moonlight-accent border-paper-border text-paper-color appearance-none rounded-xl px-4 py-2 text-lg"
+                    className="appearance-none rounded-xl border-paper-border px-4 py-2 text-lg text-paper-color dark:bg-moonlight-background dark:text-moonlight-accent"
                   >
                     <option disabled value="" selected>
                       Select Theme
@@ -180,7 +180,7 @@ export default function Builder() {
                     required
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    className={`${error == 1 ? "border-4 border-red-400" : ""} dark:bg-moonlight-background dark:text-moonlight-accent border-paper-border text-paper-color appearance-none rounded-xl px-4 py-2 text-lg`}
+                    className={`${error == 1 ? "border-4 border-red-400" : ""} appearance-none rounded-xl border-paper-border px-4 py-2 text-lg text-paper-color dark:bg-moonlight-background dark:text-moonlight-accent`}
                   />
                 </div>
                 {card == "top" ||
@@ -191,7 +191,7 @@ export default function Builder() {
                         required
                         value={layout}
                         onChange={(e) => setLayout(e.target.value)}
-                        className="dark:bg-moonlight-background dark:text-moonlight-accent border-paper-border text-paper-color appearance-none rounded-xl px-4 py-2 text-lg"
+                        className="appearance-none rounded-xl border-paper-border px-4 py-2 text-lg text-paper-color dark:bg-moonlight-background dark:text-moonlight-accent"
                       >
                         <option disabled value="" selected>
                           Select Layout
@@ -212,7 +212,7 @@ export default function Builder() {
                       required
                       value={repo}
                       onChange={(e) => setRepo(e.target.value)}
-                      className="dark:bg-moonlight-background dark:text-moonlight-accent border-paper-border text-paper-color appearance-none rounded-xl px-4 py-2 text-lg"
+                      className="appearance-none rounded-xl border-paper-border px-4 py-2 text-lg text-paper-color dark:bg-moonlight-background dark:text-moonlight-accent"
                     />
                   </div>
                 )}
@@ -227,7 +227,7 @@ export default function Builder() {
             </details>
 
             <button
-              className="dark:bg-moonlight-color dark:text-moonlight-background bg-paper-color text-paper-tip rounded-xl px-4 py-2 text-lg font-semibold"
+              className="rounded-xl bg-paper-color px-4 py-2 text-lg font-semibold text-paper-tip dark:bg-moonlight-color dark:text-moonlight-background"
               onClick={() => generate()}
             >
               Generate
@@ -237,14 +237,14 @@ export default function Builder() {
           {url && (
             <div className="flex w-full flex-col items-start justify-center gap-4">
               <img src={url} alt={card} />
-              <code className="break-all dark:bg-moonlight-background dark:text-moonlight-accent border-paper-border text-paper-color mx-4 select-all rounded-xl px-4 py-2 text-sm lg:text-lg">
+              <code className="mx-4 select-all break-all rounded-xl border-paper-border px-4 py-2 text-sm text-paper-color lg:text-lg dark:bg-moonlight-background dark:text-moonlight-accent">
                 https://gitmystat.vercel.app{url}
               </code>
             </div>
           )}
         </div>
       ) : (
-        <h1 className="text-paper-color dark:text-moonlight-color mt-24 w-full text-left text-6xl font-bold">
+        <h1 className="mt-24 w-full text-left text-6xl font-bold text-paper-color dark:text-moonlight-color">
           Select a type
         </h1>
       )}

@@ -55,6 +55,7 @@ export default function Config() {
             <Card
               url="/recent?username=rahuletto"
               text="/recent?username=rahuletto"
+              width={300}
             />
           </div>
         </div>
@@ -69,6 +70,7 @@ export default function Config() {
             <Card
               url="/repo?username=rahuletto&repo=gitmystat"
               text="/repo?username=rahuletto&repo=gitmystat"
+              width={300}
             />
           </div>
         </div>
@@ -95,7 +97,7 @@ export default function Config() {
             <Card
               url="/top?username=rahuletto&layout=compact"
               text="/top?username=rahuletto&layout=compact"
-              width={500}
+              width={300}
             />
           </div>
         </div>
@@ -122,7 +124,7 @@ export default function Config() {
             <Card
               url="/wakatime?username=rahuletto&layout=compact"
               text="/wakatime?username=rahuletto&layout=compact"
-              width={500}
+              width={300}
             />
           </div>
         </div>
