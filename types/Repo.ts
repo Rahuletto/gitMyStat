@@ -2,7 +2,7 @@ import { QLError } from "./Error";
 
 export interface RawRepoData {
   data: {
-    user: {
+    repositoryOwner: {
       repository: Repo;
     };
   };

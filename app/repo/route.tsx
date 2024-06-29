@@ -63,11 +63,11 @@ export async function GET(request: Request) {
     }
 
     const data: Repo = {
-      name: rawdata.data.user.repository.name,
-      description: rawdata.data.user.repository.description,
-      primaryLanguage: rawdata.data.user.repository.primaryLanguage,
-      stargazerCount: rawdata.data.user.repository.stargazerCount,
-      forkCount: rawdata.data.user.repository.forkCount,
+      name: rawdata.data.repositoryOwner.repository.name,
+      description: rawdata.data.repositoryOwner.repository.description,
+      primaryLanguage: rawdata.data.repositoryOwner.repository.primaryLanguage,
+      stargazerCount: rawdata.data.repositoryOwner.repository.stargazerCount,
+      forkCount: rawdata.data.repositoryOwner.repository.forkCount,
     };
 
     const image = await generateSvg(RepoComp(data, theme), {
