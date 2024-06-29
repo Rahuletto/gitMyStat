@@ -11,8 +11,8 @@ export default async function RepoData(user: string, repo: string) {
     body: JSON.stringify({
       query: `
       query {
-  user(login: "${user}") {
-    repository(name: "${repo}"){
+  repositoryOwner(login:"${user}") {
+    repository(name:"${repo}") {
       name
       description
       stargazerCount
@@ -21,7 +21,7 @@ export default async function RepoData(user: string, repo: string) {
         name
         color
       }
-    }
+    } 
   }
 }
             `,
