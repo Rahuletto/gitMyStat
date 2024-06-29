@@ -80,23 +80,8 @@ All cards are built equally. Which means these apply to every card possible
 - [Top languages](https://gitmystat.vercel.app#config)
 - [Wakatime](https://gitmystat.vercel.app#config)
 
-### [User stats](https://gitmystat.vercel.app#config)
-> This can't be that accurate as this is 'per-year' data calculation
-
-### [Recent repo](https://gitmystat.vercel.app#config)
-
-### [Repo card](https://gitmystat.vercel.app#config)
-
-### [Top languages](https://gitmystat.vercel.app#config)
-
-This is similar to [Wakatime](#wakatime) top languages card. but this uses your github repositories.
-
-
-### [Wakatime](https://gitmystat.vercel.app#config)
-This is similar to [Top Languages](#top-languages) github card. but this uses your Wakatime stats.
-
 > [!WARNING]
-> We are using WakaTime api, which only displays for profiles that are public. Make sure the `Display code time publicly` and `Display languages, editors, os, categories publicly` are enabled.
+> For wakatime, We are using WakaTime api, which only displays for profiles that are public. Make sure the `Display code time publicly` and `Display languages, editors, os, categories publicly` are enabled.
 
 ---
 
