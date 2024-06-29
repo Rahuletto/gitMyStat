@@ -10,15 +10,14 @@
 
 - [Parameters](#parameters)
 
-- Cards
-
+- [Cards](https://gitmystat.vercel.app#config)
   - [User](#user)
   - [Recent repos](#recent-repo)
   - [Repo card](#repo-card)
   - [Top languages](#top-languages)
   - [Wakatime](#wakatime)
 
-- [Themes](#themes)
+- [Themes](https://gitmystat.vercel.app#themes)
 
 ---
 
@@ -75,100 +74,34 @@ All cards are built equally. Which means these apply to every card possible
 ---
 
 ## Cards
-- [User](#user)
-- [Recent repos](#recent-repo)
-- [Repo card](#repo-card)
-- [Top languages](#top-languages)
-- [Wakatime](#wakatime)
+- [User](https://gitmystat.vercel.app#config)
+- [Recent repos](https://gitmystat.vercel.app#config)
+- [Repo card](https://gitmystat.vercel.app#config)
+- [Top languages](https://gitmystat.vercel.app#config)
+- [Wakatime](https://gitmystat.vercel.app#config)
 
-### User stats
+### [User stats](https://gitmystat.vercel.app#config)
 > This can't be that accurate as this is 'per-year' data calculation
 
-- `https://gitmystat.vercel.app/user?username=rahuletto`
+### [Recent repo](https://gitmystat.vercel.app#config)
 
-  ![user card](https://gitmystat.vercel.app/user?username=rahuletto)
+### [Repo card](https://gitmystat.vercel.app#config)
 
-
-### Recent repo
-
-- `https://gitmystat.vercel.app/recent?username=rahuletto`
-
-  ![recent](https://gitmystat.vercel.app/recent?username=rahuletto)
-
-### Repo card
-
-- `https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat`
-
-  ![repo](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat)
-
-### Top languages
+### [Top languages](https://gitmystat.vercel.app#config)
 
 This is similar to [Wakatime](#wakatime) top languages card. but this uses your github repositories.
-There are 3 layouts to choose from:
 
-- Compact
-  > `https://gitmystat.vercel.app/top?username=rahuletto&layout=compact`
 
-![top](https://gitmystat.vercel.app/top?username=rahuletto&layout=compact)
-
-- Normal (Default)
-  > `https://gitmystat.vercel.app/top?username=rahuletto&layout=normal`
-
-![top](https://gitmystat.vercel.app/top?username=rahuletto)
-
-- Bar
-  > `https://gitmystat.vercel.app/top?username=rahuletto&layout=bar`
-
-![top](https://gitmystat.vercel.app/top?username=rahuletto&layout=bar)
-
-### Wakatime
-
+### [Wakatime](https://gitmystat.vercel.app#config)
 This is similar to [Top Languages](#top-languages) github card. but this uses your Wakatime stats.
 
 > [!WARNING]
 > We are using WakaTime api, which only displays for profiles that are public. Make sure the `Display code time publicly` and `Display languages, editors, os, categories publicly` are enabled.
-There are 3 layouts to choose from:
-
-- Compact
-  > `https://gitmystat.vercel.app/wakatime?username=rahuletto&layout=compact`
-
-![waka](https://gitmystat.vercel.app/wakatime?username=rahuletto&layout=compact)
-
-- Normal (Default)
-  > `https://gitmystat.vercel.app/wakatime?username=rahuletto&layout=normal`
-
-![waka](https://gitmystat.vercel.app/wakatime?username=rahuletto)
-
-- Bar
-  > `https://gitmystat.vercel.app/wakatime?username=rahuletto&layout=bar`
-
-![waka](https://gitmystat.vercel.app/wakatime?username=rahuletto&layout=bar&theme=dark)
 
 ---
 
 ## Themes
-
-There are plenty of themes.
-
-| Themes         | Preview                                                                                         |
-| -------------- | ----------------------------------------------------------------------------------------------- |
-| `dark` (default) | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat)                 |
-| `light`          | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=light)     |
-| `gold`           | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=gold)      |
-| `gold-light`     | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=gold-light) |
-| `transparent`     | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=transparent) |
-| `transparent-light`     | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=transparent-light) |
-| `tokyonight`     | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=tokyonight) |
-| `tokyoday`     | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=tokyoday) |
-| `gruvbox`     | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=gruvbox) |
-| `gruvbox-light`     | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=gruvbox-light) |
-| `catppuccin`     | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=catppuccin) |
-| `catppuccin-light`     | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=catppuccin-light) |
-| `onedark`     | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=onedark) |
-| `onelight`     | ![default](https://gitmystat.vercel.app/repo?username=rahuletto&repo=gitMyStat&theme=onelight) |
-
-
-Visit the [themes page](https://gitmystat.vercel.app#themes) to see more!
+Visit the [themes page](https://gitmystat.vercel.app#themes)!
 
 > #### You like a theme, but you just don't like that particular color?
 >
