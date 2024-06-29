@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <header
       id="header"
-      className={`dark:bg-[#0d11163b] bg-[#fefefe3b] backdrop-blur-lg fixed top-0 z-10 flex w-full items-center justify-center gap-4 px-12 py-2 transition-all duration-200 ease-out`}
+      className={`dark:bg-[#0d11163b] bg-[#fefefe3b] backdrop-blur-lg fixed top-0 z-10 hidden md:flex w-full items-center justify-center gap-4 px-12 py-2 transition-all duration-200 ease-out`}
 
     >
       <Link
