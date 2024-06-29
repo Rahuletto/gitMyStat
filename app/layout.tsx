@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Urbanist } from "next/font/google";
 import "./globals.css";
 
@@ -9,13 +9,39 @@ const urbanist = Urbanist({
   variable: "--urbanist",
 });
 
+export const viewport: Viewport = {
+  themeColor: '#0D1116',
+  colorScheme: 'dark',
+}
+
 export const metadata: Metadata = {
   title: "gitMyStat!",
-  description: "Statistics for your GitHub account, in your README.",
+  description: "Turn your GitHub activity into sleek stats and cool visuals",
   icons: {
     icon: "/favicon.ico",
   },
-  themeColor: "#000000",
+  category: 'tool',
+  openGraph: {
+    siteName: 'gitMyStat!',
+    type: 'website',
+    locale: 'en_US',
+    images: [
+      {
+        url: "/banner.png",
+        alt: "gitMyStat!",
+      },
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      {
+        url: "/banner.png",
+        alt: "gitMyStat!",
+      },
+    ]
+  },
+
 };
 
 export default function RootLayout({

@@ -17,6 +17,9 @@ const config: Config = {
         tip: "var(--tip)",
         ...Themes
       },
+      transitionTimingFunction: {
+        'bouncy': 'cubic-bezier(0.68, -0.55, 0.27, 1.55)',
+      },
     },
   },
   plugins: [],

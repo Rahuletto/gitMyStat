@@ -20,9 +20,20 @@
   }
 }
 
-body {
+body, html {
   background: radial-gradient(circle, var(--border), 0%, var(--background) 100%);
   color: var(--color);
+  scroll-behavior: smooth;
+  transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+}
+
+#header {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px);
 }
 
 @layer utilities {
