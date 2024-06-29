@@ -6,6 +6,10 @@
 
 > Inspired by a great project [github-readme-stats](https://github.com/anuraghazra/github-readme-stats/)
 
+> [!TIP]
+> Lazy to read alot just for readme? Me too!
+> Thats why I made a [Builder](https://gitmystat.vercel.app#builder) which generates the cards for your parameters. Give it a try!
+
 ## Table of Contents
 
 - [Parameters](#parameters)

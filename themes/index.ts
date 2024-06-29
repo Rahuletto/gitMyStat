@@ -167,6 +167,67 @@ export const Themes: ThemeType = {
     padding: 24,
   },
 
+  // bw
+  stealth: {
+    color: "#5E676E",
+    accent: "#5E676E",
+    background: "#010203",
+    border: "#383E42",
+    tip: "#121212",
+    radius: 24,
+    padding: 24,
+  },
+  paper: {
+    color: "#444",
+    accent: "#444",
+    background: "#EEE",
+    border: "#DDD",
+    tip: "#B2B2B2",
+    radius: 24,
+    padding: 24,
+  },
+  // drowning
+  drowning: {
+    color: "#4A6FB5",
+    accent: "#9393A7",
+    background: "#191826",
+    border: "#1E1F2F",
+    tip: "#50688C",
+    radius: 24,
+    padding: 24,
+  },
+
+  //moonlight
+  moonlight: {
+    color: "#C69E69",
+    accent: "#CCCCB5",
+    background: "#191F28",
+    border: "#141A22",
+    tip: "#4B5975",
+    radius: 24,
+    padding: 24,
+  },
+
+  // vscode
+  vsdark: {
+    color: "#B5CEA8",
+    accent: "#D4D4D4",
+    background: "#1E1E1E",
+    border: "#252526",
+    tip: "#858585",
+    radius: 24,
+    padding: 24,
+  },
+  vslight: {
+    color: "#001080",
+    accent: "#6D7681",
+    background: "#FFF",
+    border: "#F8F8F8",
+    tip: "#6A9956",
+    radius: 24,
+    padding: 24,
+  },
+
   // cyred
   cyred: {
     color: "#E55150",
