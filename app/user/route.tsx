@@ -6,6 +6,7 @@ import Error from "../Error";
 import UserData from "@/utils/users";
 import { parseGitHubData } from "@/helpers/calculateRank";
 import UserComp from "./User";
+import { getViews } from "@/helpers/getViews";
 
 // /user?user=rahuletto
 export async function GET(request: Request) {
@@ -13,6 +14,8 @@ export async function GET(request: Request) {
 
   const { user, color, accent, background, border, radius, padding, tip } =
     getData(searchParams);
+
+  const showViews = searchParams.get("showViews") === "true";
 
   const theme: ThemeData = {
     user: user ?? "rahuletto",
@@ -45,11 +48,15 @@ export async function GET(request: Request) {
       return Send(image, {error: true});
     }
 
-    const data = parseGitHubData(rawdata)
+    const data = parseGitHubData(rawdata);
+
+    if (showViews && user) {
+      data.views = await getViews(user);
+    }
 
     const image = await generateSvg(UserComp(data, theme), {
       width: 285,
-      height: 340,
+      height: showViews ? 370 : 340,
     });
 
     return Send(image, {delay: 0.2});

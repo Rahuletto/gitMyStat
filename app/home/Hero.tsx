@@ -124,15 +124,15 @@ export default function Hero() {
             </div>
             <picture>
               <source
-                srcSet="/wakatime?username=rahuletto&theme=catppuccin&layout=bar"
+                srcSet="/top?username=rahuletto&theme=catppuccin&layout=bar"
                 media="(prefers-color-scheme: dark)"
               />
               <Image
                 width={300}
                 height={337}
                 loading="lazy"
-                src="/wakatime?username=rahuletto&theme=catppuccin-light&layout=bar"
-                alt="Recent"
+                src="/top?username=rahuletto&theme=catppuccin-light&layout=bar"
+                alt="Top bar"
               />
             </picture>
           </div>
@@ -149,14 +149,14 @@ export default function Hero() {
             </div>
             <picture>
               <source
-                srcSet="/wakatime?username=rahuletto&layout=compact&theme=catppuccin"
+                srcSet="/top?username=rahuletto&layout=compact&theme=catppuccin"
                 media="(prefers-color-scheme: dark)"
               />
               <Image
                 width={480}
                 height={130}
                 loading="lazy"
-                src="/wakatime?username=rahuletto&layout=compact&theme=catppuccin-light"
+                src="/top?username=rahuletto&layout=compact&theme=catppuccin-light"
                 alt="Top compact"
               />
             </picture>
@@ -172,7 +172,7 @@ export default function Hero() {
                 AAAAAAAAA *crash*
               </h2>
               <p className="dark:text-cyred-accent text-cyred-light-accent max-w-[800px] text-xl font-medium lg:mx-auto lg:text-center">
-                Imagine, what if these stats are crutial for your README? I got
+                Imagine, what if these stats are crucial for your README? I got
                 you covered with amazing error handling, which tells you what
                 {"'"}s wrong instead of{" "}
                 <i className="dark:text-cyred-color text-cyred-light-color font-bold">

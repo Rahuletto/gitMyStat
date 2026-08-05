@@ -130,6 +130,43 @@ export default function Config() {
             />
           </div>
         </div>
+
+        <div className="flex flex-col gap-4 w-full">
+          <h4 className="text-left text-3xl font-bold">Views</h4>
+          <div
+            className="grid w-full gap-12 rounded-xl"
+            style={{
+              gridTemplateColumns: "repeat(auto-fill, minmax(24rem, 1fr))",
+              gridTemplateRows: "min-content",
+            }}
+          >
+            <Card
+              url="/views?username=rahuletto"
+              text="/views?username=rahuletto"
+              width={200}
+            />
+            <Card
+              url="/views?username=rahuletto&nobg=true"
+              text="/views?username=rahuletto&nobg=true"
+              width={200}
+            />
+            <Card
+              url="/views?username=rahuletto&nobg=true&samp=true"
+              text="/views?username=rahuletto&nobg=true&samp=true"
+              width={200}
+            />
+            <Card
+              url="/views?username=rahuletto&size=large"
+              text="/views?username=rahuletto&size=large"
+              width={240}
+            />
+            <Card
+              url="/user?username=rahuletto&showViews=true"
+              text="/user?username=rahuletto&showViews=true"
+              width={285}
+            />
+          </div>
+        </div>
       </section>
     </>
   );

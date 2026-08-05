@@ -15,6 +15,13 @@ export default function Builder() {
   const [themeColors, setThemeColors] = useState(Themes["dark"]);
   const [error, setError] = useState(0);
 
+  const [viewsLabel, setViewsLabel] = useState("views");
+  const [viewsSize, setViewsSize] = useState("small");
+  const [viewsNobg, setViewsNobg] = useState(false);
+  const [viewsSamp, setViewsSamp] = useState(false);
+  const [viewsIcon, setViewsIcon] = useState<boolean | null>(null);
+  const [showViews, setShowViews] = useState(false);
+
   const handleColorChange = (key: keyof typeof themeColors, value: string) => {
     setThemeColors((prevThemeColors) => ({
       ...prevThemeColors,
@@ -89,6 +96,12 @@ export default function Builder() {
           username,
           repo,
           layout: card == "top" || card == "wakatime" ? layout : "",
+          viewsLabel,
+          viewsSize,
+          viewsNobg,
+          viewsSamp,
+          viewsIcon,
+          showViews,
           custom: themeColors as any,
         })
       );
@@ -142,6 +155,12 @@ export default function Builder() {
         >
           Wakatime
         </button>
+        <button
+          className={`${btnStyle} ${card === "views" && "bg-paper-border text-paper-color dark:bg-moonlight-color dark:text-moonlight-background"}`}
+          onClick={() => setCard("views")}
+        >
+          Views
+        </button>
       </div>
 
       {card ? (
@@ -183,27 +202,39 @@ export default function Builder() {
                     className={`${error == 1 ? "border-4 border-red-400" : ""} appearance-none rounded-xl border-paper-border px-4 py-2 text-lg text-paper-color dark:bg-moonlight-background dark:text-moonlight-accent`}
                   />
                 </div>
-                {card == "top" ||
-                  (card == "wakatime" && (
-                    <div className="flex flex-col items-start justify-start gap-2">
-                      <label>layout</label>
-                      <select
-                        required
-                        value={layout}
-                        onChange={(e) => setLayout(e.target.value)}
-                        className="appearance-none rounded-xl border-paper-border px-4 py-2 text-lg text-paper-color dark:bg-moonlight-background dark:text-moonlight-accent"
-                      >
-                        <option disabled value="" selected>
-                          Select Layout
-                        </option>
-                        <option value="bar">bar</option>
-                        <option value="compact">compact</option>
-                        <option value="default" selected>
-                          default
-                        </option>
-                      </select>
-                    </div>
-                  ))}
+                {card === "user" && (
+                  <div className="flex flex-col items-start justify-start gap-2">
+                    <label>showViews</label>
+                    <select
+                      value={showViews ? "true" : "false"}
+                      onChange={(e) => setShowViews(e.target.value === "true")}
+                      className="appearance-none rounded-xl border-paper-border px-4 py-2 text-lg text-paper-color dark:bg-moonlight-background dark:text-moonlight-accent"
+                    >
+                      <option value="false">false</option>
+                      <option value="true">true</option>
+                    </select>
+                  </div>
+                )}
+                {(card == "top" || card == "wakatime") && (
+                  <div className="flex flex-col items-start justify-start gap-2">
+                    <label>layout</label>
+                    <select
+                      required
+                      value={layout}
+                      onChange={(e) => setLayout(e.target.value)}
+                      className="appearance-none rounded-xl border-paper-border px-4 py-2 text-lg text-paper-color dark:bg-moonlight-background dark:text-moonlight-accent"
+                    >
+                      <option disabled value="" selected>
+                        Select Layout
+                      </option>
+                      <option value="bar">bar</option>
+                      <option value="compact">compact</option>
+                      <option value="default" selected>
+                        default
+                      </option>
+                    </select>
+                  </div>
+                )}
 
                 {card === "repo" && (
                   <div className="flex flex-col items-start justify-start gap-2">
@@ -215,6 +246,69 @@ export default function Builder() {
                       className="appearance-none rounded-xl border-paper-border px-4 py-2 text-lg text-paper-color dark:bg-moonlight-background dark:text-moonlight-accent"
                     />
                   </div>
+                )}
+
+                {card === "views" && (
+                  <>
+                    <div className="flex flex-col items-start justify-start gap-2">
+                      <label>label</label>
+                      <input
+                        value={viewsLabel}
+                        onChange={(e) => setViewsLabel(e.target.value)}
+                        placeholder="views"
+                        className="appearance-none rounded-xl border-paper-border px-4 py-2 text-lg text-paper-color dark:bg-moonlight-background dark:text-moonlight-accent"
+                      />
+                    </div>
+                    <div className="flex flex-col items-start justify-start gap-2">
+                      <label>size</label>
+                      <select
+                        value={viewsSize}
+                        onChange={(e) => setViewsSize(e.target.value)}
+                        className="appearance-none rounded-xl border-paper-border px-4 py-2 text-lg text-paper-color dark:bg-moonlight-background dark:text-moonlight-accent"
+                      >
+                        <option value="small">small</option>
+                        <option value="medium">medium</option>
+                        <option value="large">large</option>
+                      </select>
+                    </div>
+                    <div className="flex flex-col items-start justify-start gap-2">
+                      <label>nobg (transparent)</label>
+                      <select
+                        value={viewsNobg ? "true" : "false"}
+                        onChange={(e) => setViewsNobg(e.target.value === "true")}
+                        className="appearance-none rounded-xl border-paper-border px-4 py-2 text-lg text-paper-color dark:bg-moonlight-background dark:text-moonlight-accent"
+                      >
+                        <option value="false">false</option>
+                        <option value="true">true</option>
+                      </select>
+                    </div>
+                    <div className="flex flex-col items-start justify-start gap-2">
+                      <label>samp (code font)</label>
+                      <select
+                        value={viewsSamp ? "true" : "false"}
+                        onChange={(e) => setViewsSamp(e.target.value === "true")}
+                        className="appearance-none rounded-xl border-paper-border px-4 py-2 text-lg text-paper-color dark:bg-moonlight-background dark:text-moonlight-accent"
+                      >
+                        <option value="false">false</option>
+                        <option value="true">true</option>
+                      </select>
+                    </div>
+                    <div className="flex flex-col items-start justify-start gap-2">
+                      <label>icon</label>
+                      <select
+                        value={viewsIcon === null ? "default" : viewsIcon ? "true" : "false"}
+                        onChange={(e) => {
+                          const val = e.target.value;
+                          setViewsIcon(val === "default" ? null : val === "true");
+                        }}
+                        className="appearance-none rounded-xl border-paper-border px-4 py-2 text-lg text-paper-color dark:bg-moonlight-background dark:text-moonlight-accent"
+                      >
+                        <option value="default">default</option>
+                        <option value="true">true</option>
+                        <option value="false">false</option>
+                      </select>
+                    </div>
+                  </>
                 )}
               </div>
             </details>
@@ -258,6 +352,12 @@ function generateURL({
   username,
   repo,
   layout,
+  viewsLabel,
+  viewsSize,
+  viewsNobg,
+  viewsSamp,
+  viewsIcon,
+  showViews,
   custom,
 }: {
   card: string;
@@ -265,12 +365,22 @@ function generateURL({
   username: string;
   repo?: string;
   layout?: string;
+  viewsLabel?: string;
+  viewsSize?: string;
+  viewsNobg?: boolean;
+  viewsSamp?: boolean;
+  viewsIcon?: boolean | null;
+  showViews?: boolean;
   custom: ThemeType;
 }) {
   const params = new URLSearchParams();
 
-  params.append("theme", theme);
+  if (theme) params.append("theme", theme);
   params.append("username", username);
+
+  if (card === "user" && showViews) {
+    params.append("showViews", "true");
+  }
 
   if (card === "repo" && repo) {
     params.append("repo", repo);
@@ -278,6 +388,14 @@ function generateURL({
 
   if (layout) {
     params.append("layout", layout);
+  }
+
+  if (card === "views") {
+    if (viewsLabel && viewsLabel !== "views") params.append("label", viewsLabel);
+    if (viewsSize && viewsSize !== "small") params.append("size", viewsSize);
+    if (viewsNobg) params.append("nobg", "true");
+    if (viewsSamp) params.append("samp", "true");
+    if (viewsIcon !== null) params.append("icon", viewsIcon ? "true" : "false");
   }
 
   const defaultTheme = Themes[theme || "dark"];

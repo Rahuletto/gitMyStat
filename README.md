@@ -13,6 +13,8 @@
 ## Table of Contents
 
 - [Parameters](#parameters)
+  - [Customizations](#customizations)
+  - [Views Parameters](#views-parameters)
 
 - [Cards](https://gitmystat.vercel.app#config)
   - [User](#user)
@@ -20,6 +22,7 @@
   - [Repo card](#repo-card)
   - [Top languages](#top-languages)
   - [Wakatime](#wakatime)
+  - [Views](#views)
 
 - [Themes](https://gitmystat.vercel.app#themes)
 
@@ -75,6 +78,31 @@ All cards are built equally. Which means these apply to every card possible
 >
 > ![recent theme](https://gitmystat.vercel.app/recent?username=rahuletto&theme=gold)
 
+### Views Parameters
+
+Parameters specific to the `/views` badge:
+
+| Parameters | Description                                                    | Default |
+| ---------- | -------------------------------------------------------------- | ------- |
+| `label`    | Custom prefix text before the view count                       | `views` |
+| `size`     | Sizing of badge text & icon (`small`, `medium`, `large`)       | `small` |
+| `nobg`     | Transparent background mode without borders (`true`, `false`)  | `false` |
+| `samp`     | GitHub `<samp>` code monospace font style with white text      | `false` |
+| `icon`     | Toggle eye icon (`true`, `false`)                              | `true` (Normal)<br>`false` (`samp`) |
+
+- Views Badge Examples
+
+```
+![views](https://gitmystat.vercel.app/views?username=rahuletto&theme=tokyonight)
+```
+
+![views](https://gitmystat.vercel.app/views?username=rahuletto&theme=tokyonight)
+
+> [!TIP]
+> You can also showcase profile views inside your **User Stats Card** by adding `showViews=true` to `/user`.
+>
+> Example: `https://gitmystat.vercel.app/user?username=rahuletto&showViews=true`
+
 ---
 
 ## Cards
@@ -83,6 +111,7 @@ All cards are built equally. Which means these apply to every card possible
 - [Repo card](https://gitmystat.vercel.app#config)
 - [Top languages](https://gitmystat.vercel.app#config)
 - [Wakatime](https://gitmystat.vercel.app#config)
+- [Views](https://gitmystat.vercel.app#config)
 
 > [!WARNING]
 > For wakatime, We are using WakaTime api, which only displays for profiles that are public. Make sure the `Display code time publicly` and `Display languages, editors, os, categories publicly` are enabled.

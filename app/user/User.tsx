@@ -3,7 +3,7 @@ import { ThemeData } from "@/types/Theme";
 import { UserStats } from "@/types/UserStats";
 import Container from "../Container";
 import { calculateRank } from "@/helpers/calculateRank";
-import { GoCommit, GoGitPullRequest, GoIssueOpened, GoStar } from "react-icons/go";
+import { GoCommit, GoGitPullRequest, GoIssueOpened, GoStar, GoEye } from "react-icons/go";
 import { formatNumber } from "@/helpers/formatNum";
 
 export default function UserComp(data: UserStats, theme: ThemeData) {
@@ -66,6 +66,20 @@ export default function UserComp(data: UserStats, theme: ThemeData) {
               {formatNumber(data.pullRequests)}
             </div>
           </div>
+
+          {data.views !== undefined && (
+            <div tw="flex justify-between w-full">
+              <div tw="flex items-center" style={{ gap: 8 }}>
+                <GoEye color={theme.tip} size={20} />
+                <div tw={`flex text-[${theme.color}] text-xl font-bold`}>
+                  Views
+                </div>
+              </div>
+              <div tw={`flex text-[${theme.accent}] text-lg font-medium`}>
+                {formatNumber(data.views)}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </Container>

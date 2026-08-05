@@ -7,10 +7,10 @@ export function animate(svgString: string, options?: Options): string {
   let match;
   let index = 0;
   while ((match = pathRegex.exec(svgString)) !== null) {
-    if (match[1].length > 150) {
+    if (match[1].length > 40) {
       svgString = svgString.replace(
         match[0],
-        `${match[0]} class="long-path" style="animation: fadein 0.5s ${index * (options?.delay || 0.4) + 0.2}s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards; opacity: 0;"`
+        `${match[0]} class="long-path" style="animation: fadein 0.5s ${index * (options?.delay || 0.2) + 0.1}s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards; opacity: 0;"`
       );
       index++;
     }
@@ -71,6 +71,9 @@ export function animate(svgString: string, options?: Options): string {
             opacity: 1;
           }
         }
+          svg {
+            animation: fadein 0.4s ease-out forwards;
+          }
           image {
             opacity: 0;
             animation: fadein 0.5s 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;

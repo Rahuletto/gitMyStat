@@ -7,6 +7,7 @@ export interface UserStats {
   issues: number;
   stars: number;
   followers: number;
+  views?: number;
 }
 
 export interface RawUserData {

@@ -16,12 +16,20 @@ const boldFetch = fetch(
   }
 ).then((res) => res.arrayBuffer());
 
+const monoFetch = fetch(
+  new URL("../assets/RobotoMono-Regular.ttf", import.meta.url),
+  {
+    cache: "force-cache",
+  }
+).then((res) => res.arrayBuffer());
+
 export default async function generateSvg(
   fn: ReactNode,
   options: { width: number; height: number }
 ) {
   const urbanist = await urbanistFetch;
   const urbanistBold = await boldFetch;
+  const mono = await monoFetch;
 
   const data = await satori(fn, {
     width: options.width,
@@ -38,6 +46,30 @@ export default async function generateSvg(
         style: "normal",
         data: urbanistBold,
         name: "Urbanist",
+      },
+      {
+        weight: 400,
+        style: "normal",
+        data: mono,
+        name: "Roboto Mono",
+      },
+      {
+        weight: 600,
+        style: "normal",
+        data: mono,
+        name: "Roboto Mono",
+      },
+      {
+        weight: 400,
+        style: "normal",
+        data: mono,
+        name: "monospace",
+      },
+      {
+        weight: 600,
+        style: "normal",
+        data: mono,
+        name: "monospace",
       },
     ],
     loadAdditionalAsset: async (code: string, segment: string) => {
